@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
-import MealList from '../views/MealList.vue'
+import SearchByIngredient from '../views/SearchByIngredient.vue'
+import SearchByLetter from '../views/SearchByLetter.vue'
+import SearchByName from '../views/SearchByName.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -9,9 +11,19 @@ const routes: RouteRecordRaw[] = [
     component: Home,
   },
   {
-    path: '/letter/:letter',
+    path: '/by-name/:name?',
+    name: 'byName',
+    component: SearchByName,
+  },
+  {
+    path: '/by-letter/:letter?',
     name: 'byLetter',
-    component: MealList,
+    component: SearchByLetter,
+  },
+  {
+    path: '/by-ingredient/:ingredient?',
+    name: 'byIngredient',
+    component: SearchByIngredient,
   },
 ];
 
