@@ -5,7 +5,10 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      'nunito': ['nunito', 'sans-serif'],
+      'quicksand': ['quicksand', 'sans-serif'],
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),

@@ -3,9 +3,10 @@
 import {computed, ref} from 'vue';
 import axiosClient from '../utils/axiosClient';
 import store from '../store';
+import { IState } from '../utils/types';
 
 const keyword = ref('');
-const meals = computed(() => store.state.searchedMeals);
+const meals = computed(() => (store.state as IState).searchedMeals);
 
 const searchMeals = () => {
     console.log('searchMeals')
