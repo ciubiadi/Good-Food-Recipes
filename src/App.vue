@@ -3,9 +3,9 @@
 
 <template>
   <div>
-    <header>
+    <header class="flex justify-between">
       <router-link to="/home">
-        Home test
+        Home
       </router-link>
       <div>
         <router-link to="/by-name">
