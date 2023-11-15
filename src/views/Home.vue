@@ -1,8 +1,14 @@
 <script setup lang="ts">
-  import { computed } from 'vue';
+  import { computed, onMounted } from 'vue';
   import store from '../store';
+  import axiosClient from '../utils/axiosClient.ts'
 
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+  
+  onMounted(async () => {
+    const response = await axiosClient.get('/list.php?i=list');
+    console.log('response ', response.data)
+  })
 </script>
 
 <template>
