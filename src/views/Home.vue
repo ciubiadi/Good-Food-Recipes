@@ -11,7 +11,7 @@
     
 
     <div class="flex justify-center gap-2 mt-2">
-      <router-link to='/' v-for="letter of letters">
+      <router-link :to="{name: 'byLetter', params: {letter}}" v-for="letter of letters">
         {{ letter }}
       </router-link>
     </div>
