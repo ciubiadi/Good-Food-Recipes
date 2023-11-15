@@ -2,3 +2,9 @@ PREREQUISITES :
 - Install TailwindCSS :(source) https://tailwindcss.com/docs/guides/vite#vue
 - Install Vue Router
 - Install Vuex
+- TailwindCSS Forms : https://github.com/tailwindlabs/tailwindcss-forms
+- TheMealDB recipe API : https://themealdb.com/api.php
+- use axios for fetching : https://www.npmjs.com/package/axios
+
+Logic :
+- The ingredients will be saved in vuex and then retrieved from there
