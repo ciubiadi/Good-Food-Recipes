@@ -3,28 +3,41 @@ import Home from '../views/Home.vue';
 import SearchByIngredient from '../views/SearchByIngredient.vue'
 import SearchByLetter from '../views/SearchByLetter.vue'
 import SearchByName from '../views/SearchByName.vue'
+import DefaultLayout from '../components/DefaultLayout.vue'
+import GuestLayout from '../components/GuestLayout.vue'
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    name: 'home',
-    component: Home,
+    component: DefaultLayout,
+    children: [
+        {
+            path: '/',
+            name: 'home',
+            component: Home,
+        },
+        {
+            path: '/by-name/:name?',
+            name: 'byName',
+            component: SearchByName,
+        },
+        {
+            path: '/by-letter/:letter?',
+            name: 'byLetter',
+            component: SearchByLetter,
+        },
+        {
+            path: '/by-ingredient/:ingredient?',
+            name: 'byIngredient',
+            component: SearchByIngredient,
+        },
+    ]
   },
   {
-    path: '/by-name/:name?',
-    name: 'byName',
-    component: SearchByName,
-  },
-  {
-    path: '/by-letter/:letter?',
-    name: 'byLetter',
-    component: SearchByLetter,
-  },
-  {
-    path: '/by-ingredient/:ingredient?',
-    name: 'byIngredient',
-    component: SearchByIngredient,
-  },
+    path: '/auth',
+    component: GuestLayout,
+  }
+
 ];
 
 const router = createRouter({
