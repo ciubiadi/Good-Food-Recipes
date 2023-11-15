@@ -19,7 +19,7 @@ onMounted(() => {
         <!-- <pre>{{ meal }}</pre> -->
         <h1>{{meal.strMeal}}</h1>
         <img :src="meal.strMealThumb" :alt="meal.strMeal" />
-        <div>
+        <div class="flex justify-around">
             <div>
                 <strong>Category:</strong> {{ meal.strCategory }}
             </div>
@@ -31,18 +31,24 @@ onMounted(() => {
             </div>
         </div>
 
-        <div class="border-4">
+        <div class="border-4 flex justify-between">
             <div>
                 <h2>Ingredients</h2>
                 <ul>
                     <template v-for="(el, index) of new Array(20)">
                         <li v-if="meal[`strIngredient${index + 1}`]">
-                        {{ meal[`strIngredient${index + 1}`] }}</li>
+                            {{ index + 1}}. {{ meal[`strIngredient${index + 1}`] }}</li>
                     </template>
                 </ul>
             </div>
             <div>
                 <h2>Measures</h2>
+                <ul>
+                    <template v-for="(el, index) of new Array(20)">
+                        <li v-if="meal[`strMeasure${index + 1}`]">
+                            {{ index + 1}}. {{ meal[`strMeasure${index + 1}`] }}</li>
+                    </template>
+                </ul> 
             </div>
         </div>
     </div>

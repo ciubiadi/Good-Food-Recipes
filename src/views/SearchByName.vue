@@ -38,6 +38,7 @@ onMounted(() => {
             <router-link :to="{name: 'mealDetails', params: {id: meal.idMeal}}"></router-link>
             <img :src="meal.strMealThumb" :alt="meal.strMeal"/>
             <h3>{{ meal.strMeal }}</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, omnis?</p>
             <div>
                 <a :href="meal.strYoutube" target="_blank">YouTube</a>
                 <router-link to="/">View</router-link>
