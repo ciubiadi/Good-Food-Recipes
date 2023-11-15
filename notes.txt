@@ -1,0 +1,4 @@
+PREREQUISITES :
+- Install TailwindCSS :(source) https://tailwindcss.com/docs/guides/vite#vue
+- Install Vue Router
+- Install Vuex
