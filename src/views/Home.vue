@@ -23,7 +23,5 @@
         {{ letter }}
       </router-link>
     </div>
-
-    <pre>{{ ingredients }}</pre>
   </div>
 </template>
