@@ -1,13 +1,15 @@
 <script setup lang="ts">
-  import { computed, onMounted } from 'vue';
-  import store from '../store';
+  import { onMounted, ref } from 'vue';
+  // import store from '../store';
   import axiosClient from '../utils/axiosClient.ts'
 
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+  const ingredients = ref([]);
   
   onMounted(async () => {
     const response = await axiosClient.get('/list.php?i=list');
     console.log('response ', response.data)
+    ingredients.value = response.data;
   })
 </script>
 
@@ -21,5 +23,7 @@
         {{ letter }}
       </router-link>
     </div>
+
+    <pre>{{ ingredients }}</pre>
   </div>
 </template>
