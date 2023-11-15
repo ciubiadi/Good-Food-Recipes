@@ -35,6 +35,7 @@ onMounted(() => {
 
     <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-5">
         <div v-for="meal of meals" :key="meal.idMeal">
+            <router-link :to="{name: 'mealDetails', params: {id: meal.idMeal}}"></router-link>
             <img :src="meal.strMealThumb" :alt="meal.strMeal"/>
             <h3>{{ meal.strMeal }}</h3>
             <div>

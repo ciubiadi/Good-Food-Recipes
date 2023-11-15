@@ -1,0 +1,51 @@
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import axiosClient from '../utils/axiosClient';
+
+const meal = ref({});
+const route = useRoute();
+
+onMounted(() => {
+    axiosClient.get(`lookup.php?i=${route.params.id}`)
+        .then(({data}) => {
+            meal.value = data.meals[0] || {};
+        })
+});
+</script>
+
+<template>
+    <div class="flex flex-col justify-center w-[70%] m-auto">
+        <!-- <pre>{{ meal }}</pre> -->
+        <h1>{{meal.strMeal}}</h1>
+        <img :src="meal.strMealThumb" :alt="meal.strMeal" />
+        <div>
+            <div>
+                <strong>Category:</strong> {{ meal.strCategory }}
+            </div>
+            <div>
+                <strong>Area:</strong> {{ meal.strArea }}
+            </div>
+            <div>
+                <strong>Tags:</strong> {{ meal.strTags }}
+            </div>
+        </div>
+
+        <div class="border-4">
+            <div>
+                <h2>Ingredients</h2>
+                <ul>
+                    <template v-for="(el, index) of new Array(20)">
+                        <li v-if="meal[`strIngredient${index + 1}`]">
+                        {{ meal[`strIngredient${index + 1}`] }}</li>
+                    </template>
+                </ul>
+            </div>
+            <div>
+                <h2>Measures</h2>
+            </div>
+        </div>
+    </div>
+</template>
+
+

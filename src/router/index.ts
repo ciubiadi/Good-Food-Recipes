@@ -3,6 +3,7 @@ import Home from '../views/Home.vue';
 import SearchByIngredient from '../views/SearchByIngredient.vue'
 import SearchByLetter from '../views/SearchByLetter.vue'
 import SearchByName from '../views/SearchByName.vue'
+import MealDetails from '../views/MealDetails.vue'
 import DefaultLayout from '../components/DefaultLayout.vue'
 import GuestLayout from '../components/GuestLayout.vue'
 
@@ -31,6 +32,11 @@ const routes: RouteRecordRaw[] = [
             name: 'byIngredient',
             component: SearchByIngredient,
         },
+        {
+            path: '/meal/:id',
+            name: 'mealDetails',
+            component: MealDetails
+        }
     ]
   },
   {
