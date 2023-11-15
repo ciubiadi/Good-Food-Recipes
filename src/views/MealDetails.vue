@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import axiosClient from '../utils/axiosClient';
+import YoutubeButton from '../components/YoutubeButton.vue';
 
 const meal = ref({});
 const route = useRoute();
@@ -15,7 +16,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="flex flex-col justify-center w-[70%] m-auto">
+    <div class="flex flex-col justify-center max-w-[70%] m-auto">
         <!-- <pre>{{ meal }}</pre> -->
         <h1>{{meal.strMeal}}</h1>
         <img :src="meal.strMealThumb" :alt="meal.strMeal" />
@@ -29,6 +30,10 @@ onMounted(() => {
             <div>
                 <strong>Tags:</strong> {{ meal.strTags }}
             </div>
+        </div>
+
+        <div>
+            {{ meal.strInstructions}}
         </div>
 
         <div class="border-4 flex justify-between">
@@ -49,6 +54,17 @@ onMounted(() => {
                             {{ index + 1}}. {{ meal[`strMeasure${index + 1}`] }}</li>
                     </template>
                 </ul> 
+            </div>
+            <div>
+                <YoutubeButton :href="meal.strYoutube">YouTube</YoutubeButton>
+                <a 
+                    :href="meal.strSource" 
+                    class="text-gray-700 bg-green-400 hover:bg-blue-300"
+                    target="_blank"
+                >
+                    
+                    View Original Source
+                </a>
             </div>
         </div>
     </div>
