@@ -1,9 +1,8 @@
-export interface State {
-    meals: string[];
+import { IState } from "../utils/types";
+  
+  const state: IState = {
+    searchedMeals: [],
   }
   
-  const state: State = {
-    meals: ['Pizza'],
-  };
   
   export default state;

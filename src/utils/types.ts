@@ -1,6 +1,10 @@
 export interface RootState {
 
 }
+
+export interface IState {
+    searchedMeals: [];
+}
   
 export interface IMeal {
     idIngredient: string,

@@ -3,7 +3,7 @@
 
 <template>
     <header class="flex justify-between">
-        <router-link to="/home">
+        <router-link to="/">
             Home
         </router-link>
         <div>
