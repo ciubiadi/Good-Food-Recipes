@@ -4,6 +4,7 @@ import SearchByIngredient from '../views/SearchByIngredient.vue'
 import SearchByLetter from '../views/SearchByLetter.vue'
 import SearchByName from '../views/SearchByName.vue'
 import MealDetails from '../views/MealDetails.vue'
+import Ingredients from '../views/Ingredients.vue'
 import DefaultLayout from '../components/DefaultLayout.vue'
 import GuestLayout from '../components/GuestLayout.vue'
 
@@ -26,6 +27,11 @@ const routes: RouteRecordRaw[] = [
             path: '/by-letter/:letter?',
             name: 'byLetter',
             component: SearchByLetter,
+        },
+        {
+            path: '/ingredients',
+            name: 'ingredients',
+            component: Ingredients,
         },
         {
             path: '/by-ingredient/:ingredient?',

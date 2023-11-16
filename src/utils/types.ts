@@ -7,7 +7,10 @@ export interface RootState {
 // }
 
 export interface IState {
-    searchedMeals: IMeal[];
+    searchedMeals: IMeal[],
+    mealsByLetter: IMeal[],
+    mealsByIngredient: IMeal[],
+    ingredient: Object
   }
   
 export interface IMeal {

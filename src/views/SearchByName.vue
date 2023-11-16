@@ -5,7 +5,8 @@ import axiosClient from '../utils/axiosClient';
 import store from '../store';
 import { useRoute } from 'vue-router';
 import { IState } from '../utils/types';
-import YoutubeButton from '../components/YoutubeButton.vue';
+import MealItem from '../components/MealItem.vue';
+// import YoutubeButton from '../components/YoutubeButton.vue';
 
 const route = useRoute();
 const keyword = ref('');
@@ -35,17 +36,6 @@ onMounted(() => {
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-5">
-        <div v-for="meal of meals" :key="meal.idMeal">
-            <router-link :to="{name: 'mealDetails', params: {id: meal.idMeal}}">
-                <img :src="meal.strMealThumb" :alt="meal.strMeal"/>
-            </router-link>
-            <h3>{{ meal.strMeal }}</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, omnis?</p>
-            <YoutubeButton :href="meal.strYoutube"></YoutubeButton>
-            <!-- <router-link to="/">View</router-link> -->
-        </div>
-        <pre>
-            {{ meals }}
-        </pre>
+        <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
     </div>
 </template>
