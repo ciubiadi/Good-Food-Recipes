@@ -1,9 +1,31 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import axiosClient from '../utils/axiosClient';
 
+const ingredients = ref({});
+
+onMounted(() => {
+    axiosClient.get(`list.php?i=list`)
+        .then(({data}) => {
+            ingredients.value = data.meals;
+        })
+});
 </script>
 
 <template>
-  <div class="flex flex-col m-8">
-    <h1>Ingredients</h1>
-  </div>
+    <div>
+        <router-link 
+            v-for="ingredient of ingredients"
+            :key="ingredient.idIngredient"
+            :to="{
+                name: 'byIngredient',
+                params: { ingredient: ingredient.idIngredient },
+            }"
+        >
+            <h3>{{ ingredient.strIngredient }}</h3>
+            <div>{{ ingredient.strDescription }}</div>
+            <br/>
+            <hr />
+        </router-link>
+    </div>
 </template>
