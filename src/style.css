@@ -1,9 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Quicksand:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-nunito {
+  font-family: nunito, sans-serif;
+}
+
+.font-quicksand {
+  font-family: quicksand, sans-serif;
+}
+
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+  font-family: quicksand, sans-serif;
+  font-weight: 500;
+} 

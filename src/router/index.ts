@@ -1,18 +1,55 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
-import MealList from '../views/MealList.vue'
+import SearchByIngredient from '../views/SearchByIngredient.vue'
+import SearchByLetter from '../views/SearchByLetter.vue'
+import SearchByName from '../views/SearchByName.vue'
+import MealDetails from '../views/MealDetails.vue'
+import Ingredients from '../views/Ingredients.vue'
+import DefaultLayout from '../components/DefaultLayout.vue'
+import GuestLayout from '../components/GuestLayout.vue'
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    name: 'home',
-    component: Home,
+    component: DefaultLayout,
+    children: [
+        {
+            path: '/',
+            name: 'home',
+            component: Home,
+        },
+        {
+            path: '/by-name/:name?',
+            name: 'byName',
+            component: SearchByName,
+        },
+        {
+            path: '/by-letter/:letter?',
+            name: 'byLetter',
+            component: SearchByLetter,
+        },
+        {
+            path: '/ingredients',
+            name: 'ingredients',
+            component: Ingredients,
+        },
+        {
+            path: '/by-ingredient/:ingredient',
+            name: 'byIngredient',
+            component: SearchByIngredient,
+        },
+        {
+            path: '/meal/:id',
+            name: 'mealDetails',
+            component: MealDetails
+        }
+    ]
   },
   {
-    path: '/letter/:letter',
-    name: 'byLetter',
-    component: MealList,
-  },
+    path: '/auth',
+    component: GuestLayout,
+  }
+
 ];
 
 const router = createRouter({

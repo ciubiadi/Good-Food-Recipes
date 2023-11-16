@@ -4,12 +4,16 @@
   import axiosClient from '../utils/axiosClient.ts'
 
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
-  const ingredients = ref([]);
+  const ingredients = ref<any>([]);
   
   onMounted(async () => {
-    const response = await axiosClient.get('/list.php?i=list');
-    console.log('response ', response.data)
-    ingredients.value = response.data;
+    try {
+      const response = await axiosClient.get<{ data: string[] }>('/list.php?i=list');
+      console.log('response ', response.data);
+      ingredients.value = response.data;
+    } catch (error) {
+      console.error('Error fetching ingredients:', error);
+    }
   })
 </script>
 
