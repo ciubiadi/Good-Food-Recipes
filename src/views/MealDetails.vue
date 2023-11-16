@@ -3,16 +3,65 @@ import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import axiosClient from '../utils/axiosClient';
 import YoutubeButton from '../components/YoutubeButton.vue';
+import { IMeal } from '../utils/types';
 
-const meal = ref({});
+const defaultMeal: IMeal = {
+    idIngredient: '',
+    strDescription: '',
+    strIngredient: '',
+    strMealThumb: '',
+    strType:'',
+    strYoutube: '',
+    idMeal:'',
+    strMeal: '',
+    strCategory: '',
+    strArea: '',
+    strTags: '',
+    strInstructions: '',
+    strIngredient1: '',
+    strIngredient2: '',
+    strIngredient3: '',
+    strIngredient4: '',
+    strIngredient5: '',
+    strIngredient6: '',
+    strIngredient7: '',
+    strIngredient8: '',
+    strIngredient9: '',
+    strIngredient10: '',
+    strIngredient11: '',
+    strIngredient12: '',
+    strIngredient13: '',
+    strIngredient14: '',
+    strIngredient15: '',
+    strIngredient16: '',
+    strIngredient17: '',
+    strIngredient18: '',
+    strIngredient19: '',
+    strIngredient20: '',
+    value: '',
+    strSource: ''
+}
+
+const meal = ref<IMeal>({...defaultMeal});
 const route = useRoute();
 
 onMounted(() => {
     axiosClient.get(`lookup.php?i=${route.params.id}`)
         .then(({data}) => {
-            meal.value = data.meals[0] || {};
+            meal.value = data.meals[0] || defaultMeal;
         })
 });
+
+function getIngredient(meal: IMeal, index: number): string | undefined {
+  const key = `strIngredient${index}`;
+  return meal[key];
+}
+
+function getMeasure(meal: IMeal, index: number): string | undefined {
+  const key = `strMeasure${index}`;
+  return meal[key];
+}
+
 </script>
 
 <template>
@@ -40,18 +89,20 @@ onMounted(() => {
             <div>
                 <h2>Ingredients</h2>
                 <ul>
-                    <template v-for="(el, index) of new Array(20)">
-                        <li v-if="meal[`strIngredient${index + 1}`]">
-                            {{ index + 1}}. {{ meal[`strIngredient${index + 1}`] }}</li>
+                    <template v-for="(index) of new Array(20)">
+                        <li v-if="getIngredient(meal, index + 1)">
+                        {{ index + 1}}. {{ getIngredient(meal, index + 1) }}
+                        </li>
                     </template>
                 </ul>
             </div>
             <div>
                 <h2>Measures</h2>
                 <ul>
-                    <template v-for="(el, index) of new Array(20)">
-                        <li v-if="meal[`strMeasure${index + 1}`]">
-                            {{ index + 1}}. {{ meal[`strMeasure${index + 1}`] }}</li>
+                    <template v-for="(index) of new Array(20)">
+                        <li v-if="getMeasure(meal, index + 1)">
+                        {{ index + 1}}. {{ getMeasure(meal, index + 1) }}
+                        </li>
                     </template>
                 </ul> 
             </div>

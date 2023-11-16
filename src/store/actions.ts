@@ -9,12 +9,13 @@ export function searchMeals({ commit } : any, keyword: string) {
 export function searchMealsByLetter({ commit } : any, letter: string) {
   axiosClient.get(`search.php?f=${letter}`)
     .then(({ data }) => {
-      commit('setSearchedMeals', data.meals)
+        console.log('data in searchMealsByLetter', data.meals)
+      commit('setMealsByLetter', data.meals)
     })
 }
-export function searchMealsByIngredient({ commit } : any, ing: string) {
-  axiosClient.get(`filter.php?i=${ing}`)
+export function searchMealsByIngredient({ commit } : any, ingredient: string) {
+  axiosClient.get(`filter.php?i=${ingredient}`)
     .then(({ data }) => {
-      commit('setSearchedMeals', data.meals)
+      commit('setMealsByIngredients', data.meals)
     })
 }

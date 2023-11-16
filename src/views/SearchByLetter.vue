@@ -2,7 +2,7 @@
 import { computed, onMounted, watch } from 'vue';
 import store from '../store';
 import { useRoute } from 'vue-router';
-import MealItem from '../components/MealItem.vue';
+import Meals from '../components/Meals.vue';
  
   const route = useRoute();
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
@@ -13,6 +13,8 @@ import MealItem from '../components/MealItem.vue';
   })
 
   onMounted(() => {
+    console.log('meals in SeachByLetter', meals)
+    console.log('route from SeachByLetter', route)
     store.dispatch('searchMealsByLetter', route.params.letter);
   })
 </script>
@@ -22,11 +24,10 @@ import MealItem from '../components/MealItem.vue';
         <router-link 
             :to="{name: 'byLetter', params: {letter}}" 
             v-for="letter of letters"
+            :key="letter"
         >
             {{ letter }}
         </router-link>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-5">
-        <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
-    </div>
+    <Meals :meals="meals" />
 </template>
