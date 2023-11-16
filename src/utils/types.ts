@@ -54,7 +54,3 @@ export interface IIngredient {
     strDescription: string;
     value: [];
 }
-
-// export interface IState {
-//     searchedMeals: [];
-// }
