@@ -7,6 +7,11 @@ const { meal } = defineProps({
         type: Object
     }
 }) 
+
+function truncateWords(str: string, count: number) {
+    if (!str) return str;
+    return str.split(" ").slice(0, count).join(" ")
+  }
 </script>
 
 <template>
@@ -21,7 +26,7 @@ const { meal } = defineProps({
         <div class="p-3">
             <h3 class="font-bold">{{ meal.strMeal }}</h3>
             <p class="mb-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, omnis?
+                {{ truncateWords(meal.strInstructions, 20) + ' (...)' }}
             </p>
             <div class="flex items-center justify-between">
                 <YoutubeButton :href="meal.strYoutube">Youtube</YoutubeButton>
