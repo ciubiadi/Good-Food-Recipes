@@ -1751,7 +1751,7 @@ function addDevtools(app, router, matcher) {
       if (isArray(componentInstance.__vrl_devtools)) {
         componentInstance.__devtoolsApi = api;
         componentInstance.__vrl_devtools.forEach((devtoolsData) => {
-          let backgroundColor = ORANGE_400;
+          let backgroundColor = GREEN_400;
           let tooltip = "";
           if (devtoolsData.isExactActive) {
             backgroundColor = LIME_500;
@@ -1984,7 +1984,7 @@ function formatRouteRecordForInspector(route) {
     tags.push({
       label: "alias",
       textColor: 0,
-      backgroundColor: ORANGE_400
+      backgroundColor: GREEN_400
     });
   }
   if (route.__vd_match) {

@@ -15,8 +15,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="p-8 pb-0">
-        <h1 class="text-4xl font-bold mb-4 text-green-500">Meals for {{ ingredient.strIngredient }}</h1>
+    <div class="max-w-[1200px] mx-auto">
+        <div class="p-8 pb-0">
+            <h1 class="text-4xl font-bold mb-4 text-green-500">Meals for {{ ingredient.strIngredient }}</h1>
+        </div>
+        <Meals :meals="meals" />
     </div>
-    <Meals :meals="meals" />
 </template>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
 import MealItem from './MealItem.vue';
 import { IMeal } from '../utils/types';
 
@@ -9,8 +8,6 @@ const { meals } = defineProps({
         type: Array as () => IMeal[]
     }
 })  
-
-onMounted(() => console.log(meals))
 </script>
 
 <template>

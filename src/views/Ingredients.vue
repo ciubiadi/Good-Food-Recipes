@@ -34,25 +34,27 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="p-8 pb-0">
-      <h1 class="text-4xl font-bold mb-4 text-green-500">Ingredients</h1>
-    </div>
-    <div class="px-8">
-      <input
-        type="text"
-        v-model="keyword"
-        class="rounded border-2 bg-white border-gray-200 focus:ring-green-500 focus:border-orange-500 mb-3 w-full"
-        placeholder="Search for Ingredients"
-      />
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <a href="#"
-          @click.prevent="openIngredient(ingredient)"
-          v-for="ingredient of computedIngredients"
-          :key="ingredient.idIngredient"
-          class="block bg-white rounded p-3 mb-3 shadow"
-        >
-          <h3 class="block bg-white rounded p-3 mb-3 shadow">{{ ingredient.strIngredient }}</h3>
-        </a>
-      </div>
+    <div class="max-w-[1200px] mx-auto">
+        <div class="p-8 pb-0">
+        <h1 class="text-4xl font-bold mb-4 text-green-500">Ingredients</h1>
+        </div>
+        <div class="px-8">
+        <input
+            type="text"
+            v-model="keyword"
+            class="rounded border-2 bg-white border-gray-200 focus:ring-green-500 focus:border-green-500 mb-3 w-full"
+            placeholder="Search for Ingredients"
+        />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <a href="#"
+            @click.prevent="openIngredient(ingredient)"
+            v-for="ingredient of computedIngredients"
+            :key="ingredient.idIngredient"
+            class="block bg-white rounded p-3 mb-3 shadow"
+            >
+            <h3 class="block bg-white rounded p-3 mb-3 shadow">{{ ingredient.strIngredient }}</h3>
+            </a>
+        </div>
+        </div>
     </div>
   </template>
