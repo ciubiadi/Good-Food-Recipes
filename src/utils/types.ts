@@ -8,7 +8,8 @@ export interface IState {
     searchedMeals: IMeal[],
     mealsByLetter: IMeal[],
     mealsByIngredient: IMeal[],
-    ingredient: Object
+    ingredient: Object,
+    loading: Boolean
   }
   
 export interface IMeal {

@@ -4,9 +4,6 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 
 const isLinkActive = (path: string) => {
-  console.log('route.path', route.path)
-  console.log('path', path)
-  console.log(path == route.path)
   return path == route.path;
 };
 

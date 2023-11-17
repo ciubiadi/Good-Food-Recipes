@@ -4,7 +4,8 @@ import { IState } from "../utils/types";
     searchedMeals: [],
     mealsByLetter: [],
     mealsByIngredient: [],
-    ingredient: {}
+    ingredient: {},
+    loading: false,
   }
   
   
