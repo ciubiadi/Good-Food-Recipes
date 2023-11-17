@@ -33,10 +33,15 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="flex flex-col m-8">
+    <div class="p-8 pb-0">
+        <h1 class="text-4xl font-bold mb-4 text-green-500">
+            Meals by Letter
+        </h1>
+    </div>
+    <div class="flex flex-wrap justify-center gap-3 px-8 mb-6">
         <input 
             type="text" 
-            class="w-full" 
+            class="rounded border-2 bg-white border-gray-200 focus:ring-green-500 focus:border-green-500 w-full"
             placeholder="Search for meals" 
             v-model="keyword"
             @change="searchMeals"

@@ -1,6 +1,7 @@
 export interface RootState {
     mealsByLetter: any[];
     mealsByIngredient: any[]; 
+    ingredient: any;
   }
 
 export interface IState {
