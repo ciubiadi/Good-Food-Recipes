@@ -65,29 +65,29 @@ function getMeasure(meal: IMeal, index: number): string | undefined {
 </script>
 
 <template>
-    <div class="flex flex-col justify-center max-w-[70%] m-auto">
+    <div class="max-w-[800px] mx-auto p-8">
         <!-- <pre>{{ meal }}</pre> -->
-        <h1>{{meal.strMeal}}</h1>
-        <img :src="meal.strMealThumb" :alt="meal.strMeal" />
-        <div class="flex justify-around">
+        <h1 class="text-4xl font-bold mb-5 text-green-500">{{meal.strMeal}}</h1>
+        <img :src="meal.strMealThumb" :alt="meal.strMeal" class="max-w-[100%]"/>
+        <div class="grid grid-cols-1 sm:grid-cols-3 text-lg py-2">
             <div>
-                <strong>Category:</strong> {{ meal.strCategory }}
+                <strong class="font-bold">Category:</strong> {{ meal.strCategory }}
             </div>
             <div>
-                <strong>Area:</strong> {{ meal.strArea }}
+                <strong class="font-bold">Area:</strong> {{ meal.strArea }}
             </div>
             <div>
-                <strong>Tags:</strong> {{ meal.strTags }}
+                <strong class="font-bold">Tags:</strong> {{ meal.strTags }}
             </div>
         </div>
 
-        <div>
+        <div class="my-3">
             {{ meal.strInstructions}}
         </div>
 
-        <div class="border-4 flex justify-between">
+        <div class="grid grid-cols-1 sm:grid-cols-2">
             <div>
-                <h2>Ingredients</h2>
+                <h2 class="text-2xl font-semibold mb-2">Ingredients</h2>
                 <ul>
                     <template v-for="(index) of new Array(20)">
                         <li v-if="getIngredient(meal, index + 1)">
@@ -97,7 +97,7 @@ function getMeasure(meal: IMeal, index: number): string | undefined {
                 </ul>
             </div>
             <div>
-                <h2>Measures</h2>
+                <h2 class="text-2xl font-semibold mb-2">Measures</h2>
                 <ul>
                     <template v-for="(index) of new Array(20)">
                         <li v-if="getMeasure(meal, index + 1)">
@@ -106,11 +106,13 @@ function getMeasure(meal: IMeal, index: number): string | undefined {
                     </template>
                 </ul> 
             </div>
-            <div>
+            <div class="mt-4">
                 <YoutubeButton :href="meal.strYoutube">YouTube</YoutubeButton>
+            </div>
+            <div class="mt-4">
                 <a 
                     :href="meal.strSource" 
-                    class="text-gray-700 bg-green-400 hover:bg-blue-300"
+                    class="inline-block px-4 py-2 border-2 border-green-500 rounded-md text-blue-900 hover:bg-green-200 hover:border-green-300 transition-colors text-sm font-medium"
                     target="_blank"
                 >
                     

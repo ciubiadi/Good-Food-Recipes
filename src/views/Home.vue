@@ -1,31 +1,23 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue';
-  // import store from '../store';
+  import Meals from '../components/Meals.vue';
   import axiosClient from '../utils/axiosClient.ts'
+  import { IMeal } from '../utils/types';
 
-  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
-  const ingredients = ref<any>([]);
-  
+  const meals = ref<IMeal[]>([]);
+
   onMounted(async () => {
-    try {
-      const response = await axiosClient.get<{ data: string[] }>('/list.php?i=list');
-      console.log('response ', response.data);
-      ingredients.value = response.data;
-    } catch (error) {
-      console.error('Error fetching ingredients:', error);
+    for (let i = 0; i < 10; i++) {
+      axiosClient
+        .get(`random.php`)
+        .then(({ data }) => meals.value.push(data.meals[0]));
     }
-  })
+  });
 </script>
 
 <template>
-  <div class="flex flex-col m-8">
-    <input type="text" class="" placeholder="Search for meals" />
-    
-
-    <div class="flex justify-center gap-2 mt-2">
-      <router-link :to="{name: 'byLetter', params: {letter}}" v-for="letter of letters">
-        {{ letter }}
-      </router-link>
-    </div>
+  <div class="p-8 pb-0 text-green-500">
+      <h1 class="text-4xl font-bold mb-4">Some Meals</h1>
   </div>
+  <Meals :meals="meals" />
 </template>
