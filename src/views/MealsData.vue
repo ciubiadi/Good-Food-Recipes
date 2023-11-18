@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { onMounted} from 'vue';
-import DataTable from 'primevue/datatable';
-import Column from 'primevue/column';
+// import DataTable from 'primevue/datatable';
+// import Column from 'primevue/column';
 import '../style.css'
-import { IState } from '../utils/types';
-import store from '../store';
+import { IState } from '../utils/types.js';
+import store from '../store/index.js';
 import { computed } from '@vue/reactivity';
+import TableSidebar from '../components/TableSidebar.vue';
+import MealsTableSection from '../components/MealsTableSection.vue';
 
 const meals = computed(() => (store.state as IState).searchedMeals);
-const isLoading = computed(() => (store.state as IState).loading);
+// const isLoading = computed(() => (store.state as IState).loading);
 
 // const ingredients = computed(() => {
 //   const uniqueIngredients = new Set<string>();
@@ -27,22 +29,23 @@ const isLoading = computed(() => (store.state as IState).loading);
 
 onMounted(async () => {
     store.dispatch('searchMeals', '') 
+    console.log(meals)
 })
 
-const columns = [
-    // { field: 'idMeal', header: 'Id' },
-    { field: 'strMeal', header: 'Meal' },
-    { field: 'strCategory', header: 'Category' },
-    { field: 'strArea', header: 'Area' },
-    { field: 'strTags', header: 'Tags' },
-    { field: 'strTags', header: 'Tags' },
-    // { field: 'strYoutube', header: 'Video' },
-];
+// const columns = [
+//     // { field: 'idMeal', header: 'Id' },
+//     { field: 'strMeal', header: 'Meal' },
+//     { field: 'strCategory', header: 'Category' },
+//     { field: 'strArea', header: 'Area' },
+//     { field: 'strTags', header: 'Tags' },
+//     { field: 'strTags', header: 'Tags' },
+//     // { field: 'strYoutube', header: 'Video' },
+// ];
 
 </script>
 
 <template>
-    <div class="container mx-auto">
+    <!-- <div class="container mx-auto">
         <div v-if="isLoading" class="text-center mt-4">
             Loading...
         </div>
@@ -59,5 +62,9 @@ const columns = [
                 <Column v-for="col of columns" :key="col.field" :field="col.field" :header="col.header"></Column>
             </DataTable>
         </div>
-    </div>
+    </div> -->
+  <div class="flex">
+    <TableSidebar />
+    <MealsTableSection />
+  </div>
 </template>

@@ -8,6 +8,7 @@ export interface IState {
     searchedMeals: IMeal[],
     mealsByLetter: IMeal[],
     mealsByIngredient: IMeal[],
+    pinnedMeals: IMeal[],
     ingredient: Object,
     loading: Boolean
   }
@@ -23,7 +24,7 @@ export interface IMeal {
     strMeal: string
     strCategory: string;
     strArea: string;
-    strTags: string;
+    strTags: string | undefined;
     strInstructions: string;
     strIngredient1: string;
     strIngredient2: string;

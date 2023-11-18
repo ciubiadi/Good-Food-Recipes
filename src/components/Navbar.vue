@@ -23,9 +23,9 @@ const isLinkActive = (path: string) => {
                 Home
             </router-link>
             <router-link
-                :to="{ name: 'mealsTable' }"
+                :to="{ name: 'mealsData' }"
                 class="inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
-                :class="{ 'active-link': isLinkActive('/meals-table')}"
+                :class="{ 'active-link': isLinkActive('/meals-data')}"
             >
                 Meals Table
             </router-link>

@@ -4,7 +4,7 @@ import SearchByIngredient from '../views/SearchByIngredient.vue'
 import SearchByLetter from '../views/SearchByLetter.vue'
 import SearchByName from '../views/SearchByName.vue'
 import MealDetails from '../views/MealDetails.vue'
-import MealsTable from '../views/MealsTable.vue'
+import MealsData from '../views/MealsData.vue'
 import Ingredients from '../views/Ingredients.vue'
 import DefaultLayout from '../components/DefaultLayout.vue'
 import GuestLayout from '../components/GuestLayout.vue'
@@ -20,9 +20,9 @@ const routes: RouteRecordRaw[] = [
             component: Home,
         },
         {
-            path: '/meals-table',
-            name: 'mealsTable',
-            component: MealsTable,
+            path: '/meals-data',
+            name: 'mealsData',
+            component: MealsData,
         },
         {
             path: '/by-name/:name?',
