@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, onMounted, PropType } from 'vue';
 import { IMeal } from '../utils/types';
 
 export default defineComponent({
@@ -15,6 +15,10 @@ export default defineComponent({
       // Implement your logic for handling details button click
       console.log('Details clicked for meal:', props.meal);
     };
+
+    onMounted(() => {
+      console.log('Component is mounted!');
+    });
 
     return {
       onDetails,

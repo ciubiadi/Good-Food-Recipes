@@ -7,7 +7,7 @@ import { IState } from '../utils/types.js';
 import store from '../store/index.js';
 import { computed } from '@vue/reactivity';
 import TableSidebar from '../components/TableSidebar.vue';
-import MealsTableSection from '../components/MealsTableSection.vue';
+import MealsTableSection from './MealsTableSection.vue';
 
 const meals = computed(() => (store.state as IState).searchedMeals);
 // const isLoading = computed(() => (store.state as IState).loading);
@@ -64,7 +64,7 @@ onMounted(async () => {
         </div>
     </div> -->
   <div class="flex">
-    <TableSidebar />
-    <MealsTableSection />
+    <TableSidebar class="w-[20%]"/>
+    <MealsTableSection class="w-[75%]"/>
   </div>
 </template>

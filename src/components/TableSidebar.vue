@@ -1,17 +1,17 @@
 <template>
-    <div class="col-span-2 md:col-span-12 custom-container-sidebar">
-    <div class="pinned-meals-list">
-        <h2 class="pinned-meals-title text-center">Pinned Meals <small>({{ pinnedMeals.length }})</small></h2>
-        <ul class="list-group list-group-item-action" v-if="pinnedMeals.length != 0">
-            <li class="list-group-item justify-content-between" :key="meal.idMeal" v-for="meal in pinnedMeals">
-                {{ meal.idMeal}}
-                <a class="badge" @click="onUnpin(meal)" style="background-color:#966da8;padding:0.3em;">Unpin</a>
-            </li>
-        </ul>
-        <div v-else class="no-records-found">
-            No Pinned Meals Found.
-        </div>
+<div class="custom-container-sidebar">
+  <div class="pinned-meals-list">
+    <h2 class="pinned-meals-title text-center">Pinned Meals <small>({{ pinnedMeals.length }})</small></h2>
+    <ul class="list-meals" v-if="pinnedMeals.length !== 0">
+      <li class="flex justify-between items-center my-2" :key="meal.idMeal" v-for="meal in pinnedMeals">
+        <span>{{ meal.strMeal }}</span>
+        <a class="bg-green-800 text-white p-1 rounded" @click="onUnpin(meal)">Unpin</a>
+      </li>
+    </ul>
+    <div v-else class="no-records-found">
+      No Pinned Meals Found.
     </div>
+  </div>
 </div>
 
 </template>
@@ -56,6 +56,10 @@ export default {
     border-right:1px solid #f5dbff;
     @apply bg-green-50;
      padding-bottom: 3em;
+}
+
+.list-meals{
+    margin: 2em
 }
 
 .custom-container-sidebar .pinned-meals-title {

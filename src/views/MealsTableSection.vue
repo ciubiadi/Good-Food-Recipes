@@ -2,7 +2,7 @@
 import { computed } from '@vue/reactivity';
 import store from '../store/index.js';
 import { IMeal, IState } from '../utils/types.js';
-import MealsTable from './MealsTable.vue';
+import MealsTable from '../components/MealsTable.vue.js';
 
 interface IMeals {
     meals: IMeal[]
@@ -34,10 +34,18 @@ export default {
     <div class="col-span-10 sm:col-span-12 container-main-table">
     <!-- INPUT SEARCH FILTER -->
     <br />
-    <div class="form-group">
-      <label for="searchMeal">Search Meals</label>
-      <input class="form-input" id="searchMeal" type="text" placeholder="Search.." />
-    </div>
+      <div>
+          <h1 class="text-4xl font-bold mb-4 text-green-500">
+              Search Meals
+          </h1>
+      </div>
+      <div class="flex flex-wrap justify-center mb-6">
+          <input 
+              type="text" 
+              class="rounded border-2 bg-white border-gray-200 focus:ring-green-500 focus:border-green-500 w-full"
+              placeholder="Search for meals" 
+          />
+      </div>
     <br />
 
     <div class="filters-section">
@@ -63,7 +71,7 @@ export default {
       </div>
     </div>
     <div class="number-of-entries">
-      <i>There are {{ meals.length }} total projmealsects</i>
+      <i>There are {{ meals.length }} total meals</i>
       <p></p>
     </div>
 
@@ -76,7 +84,7 @@ export default {
     <div class="footer flex justify-between">
       <div class="page-size">
         Show
-        <select  id="selectNumbeOfEntries">
+        <select id="selectNumbeOfEntries">
           <option value="5">5</option>
           <option value="10" selected>10</option>
           <option value="15">15</option>
@@ -101,16 +109,17 @@ export default {
 
 <style scoped>
 #searchMeal {
-    width:50%;
-    margin: auto;
+  width:50%;
+  margin: auto;
 }
 
 .container-main-table {
   width:100%;
+  margin: 2em
 }
 
 .filters-section {
-    padding:0.8em 0;
+  padding:0.8em 0;
 }
 
 .filters .filter-tabs .btn {

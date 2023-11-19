@@ -3,108 +3,78 @@ import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import axiosClient from '../utils/axiosClient';
 import YoutubeButton from '../components/YoutubeButton.vue';
-import { IMeal } from '../utils/types';
+import { IMealValue } from '../utils/types';
+// import YoutubeButton from '../components/YoutubeButton.vue';
 
-const defaultMeal: IMeal = {
-    idIngredient: '',
-    strDescription: '',
-    strIngredient: '',
-    strMealThumb: '',
-    strType:'',
-    strYoutube: '',
-    idMeal:'',
-    strMeal: '',
-    strCategory: '',
-    strArea: '',
-    strTags: '',
-    strInstructions: '',
-    strIngredient1: '',
-    strIngredient2: '',
-    strIngredient3: '',
-    strIngredient4: '',
-    strIngredient5: '',
-    strIngredient6: '',
-    strIngredient7: '',
-    strIngredient8: '',
-    strIngredient9: '',
-    strIngredient10: '',
-    strIngredient11: '',
-    strIngredient12: '',
-    strIngredient13: '',
-    strIngredient14: '',
-    strIngredient15: '',
-    strIngredient16: '',
-    strIngredient17: '',
-    strIngredient18: '',
-    strIngredient19: '',
-    strIngredient20: '',
-    value: '',
-    strSource: ''
-}
-
-const meal = ref<IMeal>({...defaultMeal});
 const route = useRoute();
+const meal = ref<IMealValue | null>(null);
 
 onMounted(() => {
-    axiosClient.get(`lookup.php?i=${route.params.id}`)
-        .then(({data}) => {
-            meal.value = data.meals[0] || defaultMeal;
-        })
+  axiosClient.get(`lookup.php?i=${route.params.id}`)
+    .then(({ data }) => {
+      meal.value = data.meals[0] || null;
+    });
 });
 
-function getIngredient(meal: IMeal, index: number): string | undefined {
-  const key = `strIngredient${index}`;
-  return meal[key];
-}
+const getIngredient = (index: number): string | undefined => {
+  const key = `strIngredient${index}` as keyof IMealValue;
+  const value = meal.value ? meal.value[key] : undefined;
+  return value !== null ? value : undefined as string | undefined;
+};
 
-function getMeasure(meal: IMeal, index: number): string | undefined {
-  const key = `strMeasure${index}`;
-  return meal[key];
-}
-
+const getMeasure = (index: number): string | undefined => {
+  const key = `strMeasure${index}` as keyof IMealValue;
+  const value = meal.value ? meal.value[key] : undefined;
+  return value !== null ? value : undefined as string | undefined;
+};
 </script>
 
 <template>
-    <div class="max-w-[800px] mx-auto p-8">
-        <!-- <pre>{{ meal }}</pre> -->
-        <h1 class="text-4xl font-bold mb-5 text-green-500">{{meal.strMeal}}</h1>
-        <img :src="meal.strMealThumb" :alt="meal.strMeal" class="max-w-[100%]"/>
+    <div class="max-w-[800px] mx-auto p-8" v-if="meal">
+        <h1 class="text-4xl font-bold mb-5 text-green-500">
+            {{ meal?.strMeal }}
+        </h1>
+        <img :src="(meal as IMealValue).strMealThumb" :alt="(meal as IMealValue).strMeal" class="max-w-[100%]">
         <div class="grid grid-cols-1 sm:grid-cols-3 text-lg py-2">
             <div>
-                <strong class="font-bold">Category:</strong> {{ meal.strCategory }}
+                <strong class="font-bold">Category:</strong> {{ (meal as IMealValue).strCategory }}
             </div>
             <div>
-                <strong class="font-bold">Area:</strong> {{ meal.strArea }}
+                <strong class="font-bold">Area:</strong> {{ (meal as IMealValue).strArea }}
             </div>
             <div>
-                <strong class="font-bold">Tags:</strong> {{ meal.strTags }}
+                <strong class="font-bold">Tags:</strong> {{ (meal as IMealValue).strTags }}
             </div>
         </div>
 
         <div class="my-3">
-            {{ meal.strInstructions}}
+            {{ (meal as IMealValue).strInstructions }}
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2">
             <div>
-                <h2 class="text-2xl font-semibold mb-2">Ingredients</h2>
+                <h2 class="text-2xl font-semibold mb-2">
+                    Ingredients
+                </h2>
                 <ul>
-                    <template v-for="(index) of new Array(20)">
-                        <li v-if="getIngredient(meal, index + 1)">
-                        {{ index + 1}}. {{ getIngredient(meal, index + 1) }}
+                    <template v-for="ind in 20">
+                        <li v-if="getIngredient(ind)">
+                            {{ ind }}. {{ getIngredient(ind) }}
                         </li>
                     </template>
                 </ul>
             </div>
             <div>
-                <h2 class="text-2xl font-semibold mb-2">Measures</h2>
+                <h2 class="text-2xl font-semibold mb-2">
+                    Measures
+                </h2>
                 <ul>
-                    <template v-for="(index) of new Array(20)">
-                        <li v-if="getMeasure(meal, index + 1)">
-                        {{ index + 1}}. {{ getMeasure(meal, index + 1) }}
+                    <template v-for="ind in 20">
+                        <li v-if="getMeasure(ind)">
+                            {{ ind }}. {{ getMeasure(ind) }}
                         </li>
                     </template>
-                </ul> 
+                </ul>
             </div>
             <div class="mt-4">
                 <YoutubeButton :href="meal.strYoutube">YouTube</YoutubeButton>
@@ -115,11 +85,13 @@ function getMeasure(meal: IMeal, index: number): string | undefined {
                     class="inline-block px-4 py-2 border-2 border-green-500 rounded-md text-blue-900 hover:bg-green-200 hover:border-green-300 transition-colors text-sm font-medium"
                     target="_blank"
                 >
-                    
                     View Original Source
                 </a>
             </div>
         </div>
+    </div>
+    <div v-else>
+        Loading...
     </div>
 </template>
 

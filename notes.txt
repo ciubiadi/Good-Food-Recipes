@@ -1,10 +1,23 @@
 PREREQUISITES :
-- Install TailwindCSS :(source) https://tailwindcss.com/docs/guides/vite#vue
-- Install Vue Router
-- Install Vuex
+- TailwindCSS :(source) https://tailwindcss.com/docs/guides/vite#vue
+- Vue Router
+- Vuex
 - TailwindCSS Forms : https://github.com/tailwindlabs/tailwindcss-forms
 - TheMealDB recipe API : https://themealdb.com/api.php
 - use axios for fetching : https://www.npmjs.com/package/axios
 
 Logic :
-- The ingredients will be saved in vuex and then retrieved from there
+- The ingredients will be saved in vuex and then retrieved from there     
+
+Features :
+- Home : Get 10 random meals recipes
+- Search Meals : Search Meals by writing in the input field
+- Meals By Letter : Search Meals by clicking on the letter the name of the meal recipe starts
+- Search By Ingredients : Search ingredients in the list of ingredients
+- Meals Table : Search all the meals in the table and Pin favourite meals
+- Find a cooking professor :
+*) List all available cooking coaches
+*) View coach details
+*) Register as a cook 
+*) contact a coach
+*) View incoming requests
