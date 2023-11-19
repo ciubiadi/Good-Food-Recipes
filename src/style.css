@@ -1,8 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&family=Quicksand:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  margin: 0;
+}
 
 .font-nunito {
   font-family: nunito, sans-serif;
@@ -13,13 +27,13 @@
 }
 
 
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: quicksand, sans-serif;
   font-weight: 500;
-} 
+}  */
 
 .card {
   background: var(--surface-card);

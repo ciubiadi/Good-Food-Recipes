@@ -50,6 +50,20 @@ const isLinkActive = (path: string) => {
             >
                 Meals By Ingredients
             </router-link>
+            <router-link
+                :to="{ name: 'coaches' }"
+                class="inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
+                :class="{ 'active-link': isLinkActive('/coaches')}"
+            >
+                Coaches
+            </router-link>
+            <router-link
+                :to="{ name: 'requests' }"
+                class="inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
+                :class="{ 'active-link': isLinkActive('/requests')}"
+            >
+                Requests
+            </router-link>
         </div>
   </header>
 </template>

@@ -3,8 +3,8 @@ import { onMounted} from 'vue';
 // import DataTable from 'primevue/datatable';
 // import Column from 'primevue/column';
 import '../style.css'
-import { IState } from '../utils/types.js';
-import store from '../store/index.js';
+import { IState } from '../utils/types.ts';
+import store from "../store";
 import { computed } from '@vue/reactivity';
 import TableSidebar from '../components/TableSidebar.vue';
 import MealsTableSection from './MealsTableSection.vue';

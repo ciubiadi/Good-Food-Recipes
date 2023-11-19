@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, watch } from 'vue';
-import store from '../store';
+import store from "../store";
 import { useRoute } from 'vue-router';
 import Meals from '../components/Meals.vue';
  

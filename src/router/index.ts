@@ -8,6 +8,12 @@ import MealsData from '../views/MealsData.vue'
 import Ingredients from '../views/Ingredients.vue'
 import DefaultLayout from '../components/DefaultLayout.vue'
 import GuestLayout from '../components/GuestLayout.vue'
+import CoachesList from '../views/coaches/CoachesList.vue'
+import CoachDetails from '../views/coaches/CoachDetails.vue'
+import CoachRegistration from '../views/coaches/CoachRegistration.vue'
+import ContactCoach from '../views/requests/ContactCoach.vue'
+import RequestsReceived from '../views/requests/RequestsReceived.vue'
+import NotFound from '../views/NotFound.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -18,6 +24,38 @@ const routes: RouteRecordRaw[] = [
             path: '/',
             name: 'home',
             component: Home,
+        },
+        {
+            path: '/coaches',
+            name: 'coaches',
+            component: CoachesList,
+        },
+        {
+            path: '/coaches/:id',
+            name: 'coach',
+            component: CoachDetails,
+            children: [
+              {
+                path: 'contact',
+                name: 'contactCoach',
+                component: ContactCoach,
+              }
+            ]
+        },
+        {
+          path: '/register',
+          name: 'register',
+          component: CoachRegistration,
+        },
+        {
+          path: '/requests',
+          name: 'requests',
+          component: RequestsReceived,
+        },
+        {
+          path: '/:notFound(.*)',
+          name: 'notFound',
+          component: NotFound,
         },
         {
             path: '/meals-data',

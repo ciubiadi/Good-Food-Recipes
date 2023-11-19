@@ -1,8 +1,8 @@
 <script lang="ts">
 import { computed } from '@vue/reactivity';
-import store from '../store/index.js';
-import { IMeal, IState } from '../utils/types.js';
-import MealsTable from '../components/MealsTable.vue.js';
+import store from "../store";
+import { IMeal, IState } from '../utils/types.ts';
+import MealsTable from '../components/MealsTable.vue';
 
 interface IMeals {
     meals: IMeal[]

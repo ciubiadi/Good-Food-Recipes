@@ -1,4 +1,4 @@
-import { IState } from "../utils/types";
+import { IState } from "../../../utils/types";
   
   const state: IState = {
     searchedMeals: [],

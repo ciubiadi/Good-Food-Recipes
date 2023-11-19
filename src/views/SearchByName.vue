@@ -2,7 +2,7 @@
 
 import {computed, onMounted, ref} from 'vue';
 // import axiosClient from '../utils/axiosClient';
-import store from '../store';
+import store from "../store";
 import { useRoute } from 'vue-router';
 import { IState } from '../utils/types';
 // import MealItem from '../components/MealItem.vue';

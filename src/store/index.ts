@@ -1,15 +1,31 @@
-import { createStore, Store } from 'vuex';
-import { RootState } from '../utils/types'; 
-import state from './state';
-import * as actions from './actions';
-import * as mutations from './mutations';
-import * as getters from './getters';
+import { createStore } from 'vuex';
 
-const store: Store<RootState> = createStore({
-  state,
-  actions,
-  mutations,
-  getters,
+import coachesModule from './modules/coaches/index.ts';
+import requestsModule from './modules/requests/index.ts';
+import mealsModule from './modules/requests/index.ts';
+
+const store = createStore({
+  modules: {
+    meals: mealsModule,
+    coaches: coachesModule,
+    requests: requestsModule
+  },
+  state() {
+    return {
+      userId: 'c3',
+      searchedMeals: [],
+      mealsByLetter: [],
+      mealsByIngredient: [],
+      pinnedMeals: [],
+      ingredient: {},
+      loading: false,
+    };
+  },
+  getters: {
+    userId(state) {
+      return state.userId;
+    }
+  }
 });
 
 export default store;
