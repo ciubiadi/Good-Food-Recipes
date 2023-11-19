@@ -27,10 +27,10 @@ export default defineComponent({
 });
 </script>
 <template>
-    <td>{{meal.strMeal}}</td>
-    <td>{{meal.strCategory}}</td>
-    <td>{{meal.strArea}}</td>
-    <td>{{meal.strTags}}</td>
+    <td>{{meal.value.strMeal}}</td>
+    <td>{{meal.value.strCategory}}</td>
+    <td>{{meal.value.strArea}}</td>
+    <td>{{meal.value.strTags}}</td>
     <!-- <td>
         <a href="#" class="btn btn-primary" style="background-color: #5D3F6A" 
         >

@@ -4,6 +4,16 @@ export interface RootState {
     ingredient: any;
   }
 
+
+export interface ICoach {
+  id: string,
+  firstName: string,
+  lastName: string,
+  areas: string[],
+  description: string,
+  hourlyRate: number
+}
+
 export interface IState {
     searchedMeals: IMeal[],
     mealsByLetter: IMeal[],

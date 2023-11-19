@@ -80,7 +80,7 @@ export default {
             </tr>   
         </thead>
         <tbody>        
-            <tr :key="meal.idMeal" v-for="meal in meals" >
+            <tr :key="meal.value.idMeal" v-for="meal in meals" >
                 <MealsTableItem :meal="meal"/>
             </tr>
         </tbody>

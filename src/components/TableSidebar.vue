@@ -1,21 +1,3 @@
-<template>
-<div class="custom-container-sidebar">
-  <div class="pinned-meals-list">
-    <h2 class="pinned-meals-title text-center">Pinned Meals <small>({{ pinnedMeals.length }})</small></h2>
-    <ul class="list-meals" v-if="pinnedMeals.length !== 0">
-      <li class="flex justify-between items-center my-2" :key="meal.idMeal" v-for="meal in pinnedMeals">
-        <span>{{ meal.strMeal }}</span>
-        <a class="bg-green-800 text-white p-1 rounded" @click="onUnpin(meal)">Unpin</a>
-      </li>
-    </ul>
-    <div v-else class="no-records-found">
-      No Pinned Meals Found.
-    </div>
-  </div>
-</div>
-
-</template>
-
 <script lang="ts">
 import { computed } from '@vue/reactivity';
 import store from '../store/index.js';
@@ -49,6 +31,23 @@ export default {
   },
 };
 </script>
+
+<template>
+    <div class="custom-container-sidebar">
+      <div class="pinned-meals-list">
+        <h2 class="pinned-meals-title text-center">Pinned Meals <small>({{ pinnedMeals.length }})</small></h2>
+        <ul class="list-meals" v-if="pinnedMeals.length !== 0">
+          <li class="flex justify-between items-center my-2" :key="meal.value.idMeal" v-for="meal in pinnedMeals">
+            <span>{{ meal.value.strMeal }}</span>
+            <a class="bg-green-800 text-white p-1 rounded" @click="onUnpin(meal)">Unpin</a>
+          </li>
+        </ul>
+        <div v-else class="no-records-found">
+          No Pinned Meals Found.
+        </div>
+      </div>
+    </div>
+</template>
 
 <style scoped>
 .custom-container-sidebar {
