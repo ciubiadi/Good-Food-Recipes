@@ -31,10 +31,9 @@ export default {
         },
     },
     created() {
-        this.selectedCoach = this.$store.getters["coaches/coaches"].find((coach: ICoach) => coach.id === this.id);
-    },
-    mounted() {
-        console.log("this.selectedCoach", this.selectedCoach);
+        this.selectedCoach = this.$store.getters["coaches/coaches"].find(
+            (coach: ICoach) => coach.id === this.$route.params.id
+        );
     },
     components: { BaseBadge, BaseCard, BaseButton }
 };
