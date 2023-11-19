@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import store from '../store';
+import store from '../../store';
 import { useRoute } from 'vue-router';
-import Meals from '../components/Meals.vue';
 import { computed } from '@vue/reactivity';
-import { IIngredient, IState } from '../utils/types';
+import { IIngredient, IState } from '../../utils/types.js';
+import Meals from '../../components/meals/Meals.vue';
 
 const route = useRoute();
 const ingredient = computed(() => (store.state as IState).ingredient as IIngredient)

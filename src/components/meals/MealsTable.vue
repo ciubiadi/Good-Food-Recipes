@@ -1,6 +1,6 @@
 <script lang="ts">
-import store from '../store';
-import { IMeal, IState } from '../utils/types';
+import store from '../../store';
+import { IMeal, IState } from '../../utils/types';
 import { computed, onMounted } from 'vue';
 import MealsTableItem from './MealsTableItem.vue';
 
@@ -41,7 +41,7 @@ export default {
         // };
         // Return reactive state and methods
         return {
-            meals: meals.value,
+            meals: meals,
         };
     },
     components: { MealsTableItem }
@@ -80,7 +80,7 @@ export default {
             </tr>   
         </thead>
         <tbody>        
-            <tr :key="meal.value.idMeal" v-for="meal in meals" >
+            <tr :key="meal.idMeal" v-for="meal in meals" >
                 <MealsTableItem :meal="meal"/>
             </tr>
         </tbody>

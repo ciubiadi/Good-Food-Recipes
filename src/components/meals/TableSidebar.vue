@@ -1,7 +1,7 @@
 <script lang="ts">
 import { computed } from '@vue/reactivity';
-import store from '../store/index.js';
-import { IMeal, IState } from '../utils/types.js';
+import store from '../../store/';
+import { IMeal, IState } from '../../utils/types.ts';
 
 interface PinnedMeals {
     pinnedMeals: IMeal[]

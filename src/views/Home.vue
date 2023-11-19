@@ -1,8 +1,8 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue';
-  import Meals from '../components/Meals.vue';
-  import axiosClient from '../utils/axiosClient.ts'
-  import { IMeal } from '../utils/types';
+import { IMeal } from '../utils/types';
+import axiosClient from '../utils/axiosClient';
+import Meals from '../components/meals/Meals.vue';
 
   const meals = ref<IMeal[]>([]);
 

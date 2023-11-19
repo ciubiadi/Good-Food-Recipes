@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import axiosClient from '../utils/axiosClient';
+import axiosClient from '../../utils/axiosClient';
 import { useRouter } from 'vue-router';
-import store from '../store';
-import { IIngredient } from '../utils/types';
+import store from '../../store';
+import { IIngredient } from '../../utils/types';
 
 const router = useRouter();
 const keyword = ref("");

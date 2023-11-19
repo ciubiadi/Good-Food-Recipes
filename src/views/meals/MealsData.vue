@@ -2,11 +2,11 @@
 import { onMounted} from 'vue';
 // import DataTable from 'primevue/datatable';
 // import Column from 'primevue/column';
-import '../style.css'
-import { IState } from '../utils/types.ts';
-import store from "../store";
+import '../../style.css'
+import { IState } from '../../utils/types.ts';
+import store from "../../store";
 import { computed } from '@vue/reactivity';
-import TableSidebar from '../components/TableSidebar.vue';
+import TableSidebar from '../../components/meals/TableSidebar.vue';
 import MealsTableSection from './MealsTableSection.vue';
 
 const meals = computed(() => (store.state as IState).searchedMeals);

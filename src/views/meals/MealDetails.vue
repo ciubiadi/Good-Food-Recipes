@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import axiosClient from '../utils/axiosClient';
-import YoutubeButton from '../components/YoutubeButton.vue';
-import { IMealValue } from '../utils/types';
+import axiosClient from '../../utils/axiosClient.js';
+import { IMealValue } from '../../utils/types.js';
+import YoutubeButton from '../../components/ui/YoutubeButton.vue';
 // import YoutubeButton from '../components/YoutubeButton.vue';
 
 const route = useRoute();

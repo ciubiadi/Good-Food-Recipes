@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import YoutubeButton from './YoutubeButton.vue';
+import YoutubeButton from '../ui/YoutubeButton.vue';
+
 
 const { meal } = defineProps({
     meal: {

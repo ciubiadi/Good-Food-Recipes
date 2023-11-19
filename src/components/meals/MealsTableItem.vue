@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, onMounted, PropType } from 'vue';
-import { IMeal } from '../utils/types';
+import { IMeal } from '../../utils/types';
 
 export default defineComponent({
   name: 'MealsTableItem',

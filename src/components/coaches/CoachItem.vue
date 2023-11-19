@@ -1,6 +1,6 @@
 <script lang="ts">
-import BaseBadge from './ui/BaseBadge.vue';
-import BaseButton from './ui/BaseButton.vue';
+import BaseBadge from '../ui/BaseBadge.vue';
+import BaseButton from '../ui/BaseButton.vue';
 
 export default {
     props: ["id", "firstName", "lastName", "rate", "areas"],
@@ -15,7 +15,7 @@ export default {
             return `${this.$route.path}/${this.id}`;
         }
     },
-    components: { BaseButton, BaseBadge }
+    components: { BaseBadge, BaseButton }
 }
 </script>
 

@@ -2,12 +2,12 @@
 
 import {computed, onMounted, ref} from 'vue';
 // import axiosClient from '../utils/axiosClient';
-import store from "../store";
+import store from "../../store/index.js";
 import { useRoute } from 'vue-router';
-import { IState } from '../utils/types';
+import { IState } from '../../utils/types.js';
+import Meals from '../../components/meals/Meals.vue';
 // import MealItem from '../components/MealItem.vue';
 // import YoutubeButton from '../components/YoutubeButton.vue';
-import Meals from '../components/Meals.vue';
 
 const route = useRoute();
 const keyword = ref('');

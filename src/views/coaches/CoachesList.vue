@@ -1,5 +1,5 @@
 <script lang="ts">
-import CoachItem from '../../components/CoachItem.vue';
+import CoachItem from '../../components/coaches/CoachItem.vue';
 import BaseButton from '../../components/ui/BaseButton.vue';
 import BaseCard from '../../components/ui/BaseCard.vue';
 
