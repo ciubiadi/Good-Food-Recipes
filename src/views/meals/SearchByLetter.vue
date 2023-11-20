@@ -2,30 +2,35 @@
 import { computed, onMounted, watch } from 'vue';
 // import store from "../../store";
 import { useRoute } from 'vue-router';
-import Meals from '../../components/meals/Meals.vue';
 import { useStore } from 'vuex';
+import Meals from '../../components/meals/Meals.vue';
  
 export default {
-    setup(){
+    setup() {
         const store = useStore();
         const route = useRoute();
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
-        const meals = computed(() => store.state.mealsByLetter);
-
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+        const meals = computed(() => {console.log('store-letter', store); return store.state.meals.mealsByLetter});
         watch(route, () => {
-            store.dispatch('searchMealsByLetter', route.params.letter)
-        })
-
+            console.log('BEFORE: SearchByLetter-watch:MEALS', meals)
+            console.log('SearchByLetter-watch:STORE', store)
+            store.dispatch("meals/searchMealsByLetter", route.params.letter);
+            console.log('AFTER: SearchByLetter-watch:MEALS', meals)
+            console.log('SearchByLetter-watch:STORE', store)
+        });
         onMounted(() => {
-            store.dispatch('searchMealsByLetter', route.params.letter);
-        })
-
+            console.log('BEFORE: SearchByLetter-mounted:MEALS', meals)
+            console.log('SearchByLetter-mounted:STORE', store)
+            store.dispatch("meals/searchMealsByLetter", route.params.letter);
+            console.log('AFTER: SearchByLetter-mounted:MEALS', meals)
+            console.log('SearchByLetter-mounted:STORE', store)
+        });
         return {
             letters,
             meals,
-
-        }
-    }
+        };
+    },
+    components: { Meals }
 }
 </script>
 
@@ -46,6 +51,7 @@ export default {
                 {{ letter }}
             </router-link>
         </div>
+
         <Meals :meals="meals" />
     </div>
 </template>

@@ -33,11 +33,9 @@ import axiosClient from "../../../utils/axiosClient";
 
 export default {
   async searchMeals({ commit } : any, keyword: string) {
-    console.log('searchMeals-actions.ts:KEYWORD', keyword);
     commit('setLoading', true);
-    axiosClient.get(`search.php?s=${keyword}`)
+    await axiosClient.get(`search.php?s=${keyword}`)
       .then(({ data }) => {
-        console.log('searchMeals-actions.ts:DATA', data)
         commit('setSearchedMeals', data.meals)
       })
       .finally(() => {
@@ -46,7 +44,7 @@ export default {
   },
   async searchMealsByLetter({ commit } : any, letter: string) {
     commit('setLoading', true);
-    axiosClient.get(`search.php?f=${letter}`)
+    await axiosClient.get(`search.php?f=${letter}`)
       .then(({ data }) => {
         commit('setMealsByLetter', data.meals)
       })
@@ -55,13 +53,25 @@ export default {
       })
   },
   async searchMealsByIngredient({ commit } : any, ingredient: string) {
+    console.log('searchMealsByIngredient-actions.ts:ingredient', ingredient);
     commit('setLoading', true);
     axiosClient.get(`filter.php?i=${ingredient}`)
       .then(({ data }) => {
+        console.log('searchMealsByIngredient-actions.ts:DATA', data)
         commit('setMealsByIngredients', data.meals)
       })
       .finally(() => {
         commit('setLoading', false)
+      })
+  },
+  async getMealDetails({ commit } : any, mealId: number){
+    commit('setLoading', true);
+    axiosClient.get(`'lookup.php?i=${mealId}`)
+      .then(({data}) => {
+        console.log('data getDetails', data)
+      })
+      .finally(() => {
+        commit('setLoading', false);
       })
   }
 }

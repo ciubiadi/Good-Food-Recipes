@@ -14,20 +14,20 @@ const store = createStore({
     return {
       userId: 'c3',
       searchedMeals: [],
-      mealsByLetter: [],
-      mealsByIngredient: [],
-      pinnedMeals: [],
-      ingredient: {},
-      loading: false,
+      // mealsByLetter: [],
+      // mealsByIngredient: [],
+      // pinnedMeals: [],
+      // ingredient: {},
+      // loading: false,
     };
   },
   getters: {
     userId(state) {
       return state.userId;
     },
-    // searchedMeals(state) {
-    //   return state.searchedMeals;
-    // }
+    meals(state) {
+      return state.searchedMeals;
+    }
   }
 });
 

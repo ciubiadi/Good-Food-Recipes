@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import YoutubeButton from '../ui/YoutubeButton.vue';
+import { truncateWords } from '../../utils/filters';
 
 
 const { meal } = defineProps({
@@ -8,11 +9,16 @@ const { meal } = defineProps({
         type: Object
     }
 }) 
-
-function truncateWords(str: string, count: number) {
-    if (!str) return str;
-    return str.split(" ").slice(0, count).join(" ")
-  }
+// export default {
+//     props: ["meal"],
+//     setup(props) {
+//         onMounted(() => {
+//             console.log("mealItem-props", props);
+//         })
+        
+//     },
+//     components: { YoutubeButton }
+// }
 </script>
 
 <template>

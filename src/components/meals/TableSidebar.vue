@@ -19,7 +19,7 @@ export default {
   setup() {
     const store = useStore();
     // Declare reactive state using ref
-    const pinnedMeals = computed(() => store.state.searchedMeals);
+    const pinnedMeals = computed(() => { console.log('sstore', store); return store.state.searchedMeals});
 
     // Method to increment the count
     const onUnpin = (meal: IMealValue) => {

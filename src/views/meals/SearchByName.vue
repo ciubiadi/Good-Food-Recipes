@@ -1,42 +1,27 @@
 <script lang="ts">
-import { computed, onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { computed, ref } from 'vue';
+// import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import Meals from '../../components/meals/Meals.vue';
 export default {
     name: "SearchByName",
     setup() {
         const keyword = ref("");
-        const route = useRoute();
         const store = useStore();
-        const meals = computed(() => store.state.searchedMeals);
+        const meals = computed(() => { console.log('storesbn', store); return store.state.meals.searchedMeals});
         
-        const searchSomeMeals = async () => {
+        const searchSomeMeals = () => {
             // try {
-                console.log('keyword-SearchByName', keyword)
             if (keyword.value) {
-                console.log('meals-SearchByName.vue-BEFORE', meals)
-                await store.dispatch("meals/searchMeals", keyword.value);
-                console.log('meals-SearchByName.vue-AFTER', meals)
+                store.dispatch("meals/searchMeals", keyword.value);
             }
             else {
-                console.log('meals-SearchByName.vue-BEFORE', meals)
                 store.commit("meals/setSearchedMeals", []);
-                console.log('meals-SearchByName.vue-AFTER', meals)
             }
             // }
         };
-        onMounted(() => {
-            // console.log('route-SearchByName-onMounted', route);
-            // keyword.value = route.params.name as string;
-            // if (keyword.value) {
-            //     searchSomeMeals();
-            // }
-        });
         return {
             keyword,
-            route,
-            store,
             meals,
             searchSomeMeals,
         };
@@ -62,6 +47,6 @@ export default {
             />
         </div>
 
-        <Meals />
+        <Meals :meals="meals"/>
     </div>
 </template>
