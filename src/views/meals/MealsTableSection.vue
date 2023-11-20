@@ -1,12 +1,8 @@
 <script lang="ts">
 import { computed } from '@vue/reactivity';
-import store from "../../store";
-import { IMeal, IState } from '../../utils/types.ts';
-import MealsTable from '../components/MealsTable.vue';
-
-interface IMeals {
-    meals: IMeal[]
-}
+// import store from "../../store";
+import { useStore } from 'vuex';
+import MealsTable from '../../components/meals/MealsTable.vue';
 
 // Define types for methods
 // interface SidebarMethods {
@@ -15,19 +11,20 @@ interface IMeals {
 
 // Export component options with TypeScript types
 export default {
-    setup(): IMeals {
+    setup() {
+        const store = useStore();
         // Declare reactive state using ref
-        const meals = computed(() => (store.state as IState).searchedMeals);
+        const meals = computed(() => store.state.searchedMeals);
         // Method to increment the count
         // const onUnpin = () => {
         //   console.log('unpin');
         // };
         // Return reactive state and methods
         return {
-            meals: meals.value,
+            meals,
         };
     },
-    // components: { MealsTable }
+    components: { MealsTable }
 };
 </script>
 <template>
@@ -100,8 +97,8 @@ export default {
           : Math.round(meals.length / this.pageSize) }} -->
       </div>
       <div class="pagination-buttons">
-        <button class="btn btn-info" >Previous</button>
-        <button class="btn btn-info" >Next</button>
+        <button class="btn btn-info">Previous</button>
+        <button class="btn btn-info">Next</button>
       </div>
     </div>
   </div>

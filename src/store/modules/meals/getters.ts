@@ -1,20 +1,22 @@
+import { IMealsState } from "../../../utils/types";
+
 export default {
-    searchedMeals(state: any) {
+    searchedMeals(state: IMealsState) {
         return state.searchedMeals;
     },
-    mealsByLetter(state: any) {
+    mealsByLetter(state: IMealsState) {
         return state.mealsByLetter
     },
-    mealsByIngredient(state: any) {
+    mealsByIngredient(state: IMealsState) {
         return state.mealsByIngredient
     },
-    pinnedMeals(state: any) {
+    pinnedMeals(state: IMealsState) {
         return state.pinnedMeals
     },
-    ingredient(state: any) {
+    ingredient(state: IMealsState) {
         return state.ingredient
     },
-    loading(state: any) {
+    loading(state: IMealsState) {
         return state.loading
     }
 };

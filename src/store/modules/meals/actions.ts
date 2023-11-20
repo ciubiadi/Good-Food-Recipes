@@ -33,9 +33,11 @@ import axiosClient from "../../../utils/axiosClient";
 
 export default {
   async searchMeals({ commit } : any, keyword: string) {
+    console.log('searchMeals-actions.ts:KEYWORD', keyword);
     commit('setLoading', true);
     axiosClient.get(`search.php?s=${keyword}`)
       .then(({ data }) => {
+        console.log('searchMeals-actions.ts:DATA', data)
         commit('setSearchedMeals', data.meals)
       })
       .finally(() => {

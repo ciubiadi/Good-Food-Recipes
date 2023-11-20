@@ -1,30 +1,24 @@
 <script lang="ts">
-import { defineComponent, onMounted, PropType } from 'vue';
-import { IMeal } from '../../utils/types';
-
-export default defineComponent({
+export default {
   name: 'MealsTableItem',
-  props: {
-    meal: {
-      type: Object as PropType<IMeal>,
-      required: true,
-    },
-  },
+  // props: {
+  //   meal: {
+  //     type: Object as PropType<IMeal>,
+  //     required: true,
+  //   },
+  // },
+  props: ['meal'],
   setup(props) {
     const onDetails = () => {
       // Implement your logic for handling details button click
       console.log('Details clicked for meal:', props.meal);
     };
 
-    onMounted(() => {
-      console.log('Component is mounted!');
-    });
-
     return {
       onDetails,
     };
   },
-});
+};
 </script>
 <template>
     <td>{{meal.value.strMeal}}</td>

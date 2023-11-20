@@ -1,31 +1,34 @@
 <script lang="ts">
 import { computed } from '@vue/reactivity';
-import store from '../../store/';
-import { IMeal, IState } from '../../utils/types.ts';
+// import store from '../../store/';
+import { useStore } from 'vuex';
+import { IMealValue } from '../../utils/types';
 
-interface PinnedMeals {
-    pinnedMeals: IMeal[]
-}
+// interface PinnedMeals {
+//     pinnedMeals: IMeal[]
+// }
 
-// Define types for methods
-interface SidebarMethods {
-  onUnpin: (meal: IMeal) => void;
-}
+// // Define types for methods
+// interface SidebarMethods {
+//   onUnpin: (meal: IMeal) => void;
+// }
 
 // Export component options with TypeScript types
 export default {
-  setup(): PinnedMeals & SidebarMethods {
+  // setup(): PinnedMeals & SidebarMethods {
+  setup() {
+    const store = useStore();
     // Declare reactive state using ref
-    const pinnedMeals = computed(() => (store.state as IState).searchedMeals);
+    const pinnedMeals = computed(() => store.state.searchedMeals);
 
     // Method to increment the count
-    const onUnpin = () => {
-      console.log('unpin');
+    const onUnpin = (meal: IMealValue) => {
+      console.log('TableSidebar-onUnpin-meal', meal)
     };
 
     // Return reactive state and methods
     return {
-        pinnedMeals: pinnedMeals.value,
+        pinnedMeals,
         onUnpin,
     };
   },
@@ -37,8 +40,8 @@ export default {
       <div class="pinned-meals-list">
         <h2 class="pinned-meals-title text-center">Pinned Meals <small>({{ pinnedMeals.length }})</small></h2>
         <ul class="list-meals" v-if="pinnedMeals.length !== 0">
-          <li class="flex justify-between items-center my-2" :key="meal.value.idMeal" v-for="meal in pinnedMeals">
-            <span>{{ meal.value.strMeal }}</span>
+          <li class="flex justify-between items-center my-2" :key="meal.idMeal" v-for="meal in pinnedMeals">
+            <span>{{ meal.strMeal }}</span>
             <a class="bg-green-800 text-white p-1 rounded" @click="onUnpin(meal)">Unpin</a>
           </li>
         </ul>

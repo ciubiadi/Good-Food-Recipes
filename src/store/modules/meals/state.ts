@@ -1,13 +1,13 @@
-import { IState } from "../../../utils/types";
+// import { IState } from "../../../utils/types";
   
-  const state: IState = {
-    searchedMeals: [],
-    mealsByLetter: [],
-    mealsByIngredient: [],
-    pinnedMeals: [],
-    ingredient: {},
-    loading: false,
-  }
+//   const state: IState = {
+//     searchedMeals: [],
+//     mealsByLetter: [],
+//     mealsByIngredient: [],
+//     pinnedMeals: [],
+//     ingredient: {},
+//     loading: false,
+//   }
   
   
-  export default state;
+//   export default state;

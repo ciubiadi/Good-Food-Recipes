@@ -1,17 +1,36 @@
-<script setup lang="ts">
+<script lang="ts">
+import { computed } from 'vue';
 import MealItem from './MealItem.vue';
-import { IMeal, IMealValue } from '../../utils/types';
+import { useStore } from 'vuex';
+// import { IMeal, IMealValue } from '../../utils/types';
 
-const { meals } = defineProps({
-    meals: {
-        required: true,
-        type: Array as () => IMealValue[]
-    }
-})  
+// const { meals } = defineProps({
+//     meals: {
+//         required: true,
+//         type: Array as () => any[]
+//     }
+// })  
+export default {
+    // props: ["meals"],
+    setup() {
+        const store = useStore();
+        const meals = computed(() => { 
+            // console.log('props.meals-Meals.vue', props.meals)
+            // return props.meals
+            console.log('store-Meals.vue', store)
+            return store.state.meals.searchedMeals;
+        });
+        return {
+            meals,
+        };
+    },
+    components: { MealItem }
+}
+
 </script>
 
 <template>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 px-8 mb-[3em]">
         <MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal" />
     </div>
     <div v-if="!meals.length" class="flex justify-center text-gray-600 p-8">

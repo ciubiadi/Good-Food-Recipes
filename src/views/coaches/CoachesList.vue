@@ -13,7 +13,7 @@ export default {
         }
     },
     mounted() {
-        console.log('this.filteredCoaches', this.filteredCoaches)
+        // console.log('this.filteredCoaches', this.filteredCoaches)
     },
     components: { CoachItem, BaseButton, BaseCard }
 }

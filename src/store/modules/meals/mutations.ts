@@ -1,22 +1,24 @@
-import { IState } from "../../../utils/types";
+import { IIngredient, IMealValue, IStoreState } from "../../../utils/types";
   export default {
-    setSearchedMeals(state: IState, meals: any) {
+    setSearchedMeals(state: IStoreState, meals: IMealValue[]) {
+      console.log('setSearchedMeals-mutations.ts:STATE', state)
+      console.log('setSearchedMeals-mutations.ts:MEALS', meals)
       state.searchedMeals = meals || [];
       state.loading = false;
     },
-    setMealsByLetter(state: IState, meals: any) {
+    setMealsByLetter(state: IStoreState, meals: IMealValue[]) {
       state.mealsByLetter = meals || [];
       state.loading = false;
     },
-    setMealsByIngredients(state: IState, meals: any) {
+    setMealsByIngredients(state: IStoreState, meals: IMealValue[]) {
       state.mealsByIngredient = meals || [];
       state.loading = false;
     },
-    setIngredient(state: IState, ingredient: any) {
+    setIngredient(state: IStoreState, ingredient: IIngredient) {
       state.ingredient = ingredient;
       state.loading = false;
     },
-    setLoading(state: IState, isLoading: boolean) {
+    setLoading(state: IStoreState, isLoading: boolean) {
       state.loading = isLoading;
     }
   };

@@ -1,7 +1,7 @@
 import mutations from './mutations.ts';
 import actions from './actions.ts';
 import getters from './getters.ts';
-import { ICoach } from '../../../utils/types.ts';
+// import { ICoach } from '../../../utils/types.ts';
 
 export default {
   namespaced: true,
@@ -26,7 +26,7 @@ export default {
             'I am Julie and as a senior cook with 10+ years experience, I can help you get your first job or progress in your current role.',
           hourlyRate: 30
         }
-      ] as ICoach[]
+      ]
     };
   },
   mutations,

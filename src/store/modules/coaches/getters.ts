@@ -1,8 +1,10 @@
+import { ICoachesState } from "../../../utils/types";
+
 export default {
-    coaches(state: any) {
+    coaches(state: ICoachesState) {
       return state.coaches;
     },
-    hasCoaches(state: any) {
+    hasCoaches(state: ICoachesState) {
       return state.coaches && state.coaches.length > 0;
     },
 };

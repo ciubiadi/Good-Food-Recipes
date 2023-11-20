@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import { onMounted, ref } from 'vue';
-import { IMeal } from '../utils/types';
+import { onMounted, ref } from 'vue';
+import { IMealValue } from '../utils/types';
 import axiosClient from '../utils/axiosClient';
 import Meals from '../components/meals/Meals.vue';
 
-  const meals = ref<IMeal[]>([]);
+  const meals = ref<IMealValue[]>([]);
 
   onMounted(async () => {
     for (let i = 0; i < 10; i++) {

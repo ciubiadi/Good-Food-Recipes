@@ -3,12 +3,12 @@ import { onMounted } from 'vue';
 import store from '../../store';
 import { useRoute } from 'vue-router';
 import { computed } from '@vue/reactivity';
-import { IIngredient, IState } from '../../utils/types.js';
 import Meals from '../../components/meals/Meals.vue';
+import { IIngredient } from '../../utils/types';
 
 const route = useRoute();
-const ingredient = computed(() => (store.state as IState).ingredient as IIngredient)
-const meals = computed(() => (store.state as IState).mealsByIngredient)
+const ingredient = computed(() => store.state.ingredient as IIngredient)
+const meals = computed(() => store.state.mealsByIngredient)
 onMounted(() => {
   store.dispatch('searchMealsByIngredient', route.params.ingredient)
 })

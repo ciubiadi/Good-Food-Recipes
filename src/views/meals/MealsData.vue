@@ -1,46 +1,27 @@
-<script setup lang="ts">
-import { onMounted} from 'vue';
-// import DataTable from 'primevue/datatable';
-// import Column from 'primevue/column';
-import '../../style.css'
-import { IState } from '../../utils/types.ts';
-import store from "../../store";
+<script lang="ts">
+import { onMounted } from 'vue';
 import { computed } from '@vue/reactivity';
+import { useStore } from 'vuex';
 import TableSidebar from '../../components/meals/TableSidebar.vue';
 import MealsTableSection from './MealsTableSection.vue';
 
-const meals = computed(() => (store.state as IState).searchedMeals);
-// const isLoading = computed(() => (store.state as IState).loading);
+export default {
+    setup() {
+        const store = useStore();
+        const meals = computed(() => store.state.searchedMeals);
+        
+        onMounted(async () => {
+            console.log("store-MealsData", store);
+            store.dispatch("meals/searchMeals", "");
+            console.log("meals-MealsData", meals);
+        });
 
-// const ingredients = computed(() => {
-//   const uniqueIngredients = new Set<string>();
-
-//   meals.value.forEach((meal) => {
-//     for (let i = 1; i <= 20; i++) {
-//       const ingredient = meal[`strIngredient${i}`];
-//       if (ingredient && ingredient.trim() !== '') {
-//         uniqueIngredients.add(ingredient);
-//       }
-//     }
-//   });
-
-//   return Array.from(uniqueIngredients);
-// });
-
-onMounted(async () => {
-    store.dispatch('searchMeals', '') 
-    console.log(meals)
-})
-
-// const columns = [
-//     // { field: 'idMeal', header: 'Id' },
-//     { field: 'strMeal', header: 'Meal' },
-//     { field: 'strCategory', header: 'Category' },
-//     { field: 'strArea', header: 'Area' },
-//     { field: 'strTags', header: 'Tags' },
-//     { field: 'strTags', header: 'Tags' },
-//     // { field: 'strYoutube', header: 'Video' },
-// ];
+        return {
+            meals
+        };
+    },
+    components: { TableSidebar, MealsTableSection }
+}
 
 </script>
 
@@ -64,7 +45,7 @@ onMounted(async () => {
         </div>
     </div> -->
   <div class="flex">
-    <TableSidebar class="w-[20%]"/>
-    <MealsTableSection class="w-[75%]"/>
+    <TableSidebar class="w-[30%]"/>
+    <MealsTableSection class="w-[70%]"/>
   </div>
 </template>

@@ -2,7 +2,7 @@ import { createStore } from 'vuex';
 
 import coachesModule from './modules/coaches/index.ts';
 import requestsModule from './modules/requests/index.ts';
-import mealsModule from './modules/requests/index.ts';
+import mealsModule from './modules/meals/index.ts';
 
 const store = createStore({
   modules: {
@@ -24,7 +24,10 @@ const store = createStore({
   getters: {
     userId(state) {
       return state.userId;
-    }
+    },
+    // searchedMeals(state) {
+    //   return state.searchedMeals;
+    // }
   }
 });
 
