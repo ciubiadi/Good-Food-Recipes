@@ -15,6 +15,7 @@ export default {
     setup(props) {
         // const store = useStore();
         const mealsList = computed(() => { 
+            console.log('props.meals', props.meals)
             return props.meals;
             // console.log('store-Meals.vue', store)
             // return store.state.meals.searchedMeals;

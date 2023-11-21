@@ -47,6 +47,7 @@ const routes: RouteRecordRaw[] = [
         {
             path: '/coaches/:id',
             name: 'coach',
+            props: true,
             component: CoachDetailsVue,
             children: [
               {
