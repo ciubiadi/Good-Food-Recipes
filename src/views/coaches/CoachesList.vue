@@ -33,10 +33,9 @@ export default {
         async function loadCoaches(refresh = false) {
             localState.value.isloading = true;
             try {
-                console.log('refresh', refresh)
-                // await store.dispatch('coaches/loadCoaches', {
-                //     forceRefresh: refresh,
-                // });
+                await store.dispatch('coaches/loadCoaches', {
+                    forceRefresh: refresh,
+                });
             } catch (error: any) {
                 localState.value.error = error.message || 'Something went wrong!';
             }
