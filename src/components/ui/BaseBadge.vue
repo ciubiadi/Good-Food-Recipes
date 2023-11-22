@@ -31,7 +31,7 @@ export default {
   }
   
   .vegan {
-    background-color: rgb(120, 142, 8);
+    background-color: #93ba05;
     color: white;
   }
   
@@ -41,7 +41,7 @@ export default {
   }
   
   .indian {
-    background-color: #0eba05;
+    background-color: #05baa8;
     color: white;
   }
   .mexican {
