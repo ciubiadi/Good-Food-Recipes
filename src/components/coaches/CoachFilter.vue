@@ -1,26 +1,4 @@
-<template>
-    <BaseCard>
-      <h2>Find Your Coach</h2>
-      <span class="filter-option">
-        <input type="checkbox" id="mexican" checked @change="setFilter" />
-        <label for="mexican">Mexican</label>
-      </span>
-      <span class="filter-option">
-        <input type="checkbox" id="vegan" @change="setFilter" />
-        <label for="vegan">Vegan</label>
-      </span>
-      <span class="filter-option">
-        <input type="checkbox" id="chinese" @change="setFilter" />
-        <label for="chinese">Chinese</label>
-      </span>
-      <span class="filter-option">
-        <input type="checkbox" id="indian" @change="setFilter" />
-        <label for="indian">Indian</label>
-      </span>
-    </BaseCard>
-  </template>
-  
-  <script lang="ts">
+<script lang="ts">
 import { ref } from 'vue';
 import BaseCard from '../ui/BaseCard.vue';
 
@@ -53,6 +31,28 @@ import BaseCard from '../ui/BaseCard.vue';
     components: { BaseCard }
 }
   </script>
+
+<template>
+  <BaseCard>
+    <h2>Find Your Coach</h2>
+    <span class="filter-option">
+      <input type="checkbox" id="mexican" checked @change="setFilter" />
+      <label for="mexican">Mexican</label>
+    </span>
+    <span class="filter-option">
+      <input type="checkbox" id="vegan" @change="setFilter" />
+      <label for="vegan">Vegan</label>
+    </span>
+    <span class="filter-option">
+      <input type="checkbox" id="chinese" @change="setFilter" />
+      <label for="chinese">Chinese</label>
+    </span>
+    <span class="filter-option">
+      <input type="checkbox" id="indian" @change="setFilter" />
+      <label for="indian">Indian</label>
+    </span>
+  </BaseCard>
+</template>
   
   <style scoped>
   h2 {

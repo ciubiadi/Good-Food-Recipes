@@ -1,7 +1,6 @@
 import mutations from './mutations.ts';
 import actions from './actions.ts';
 import getters from './getters.ts';
-// import { ICoach } from '../../../utils/types.ts';
 
 export default {
   namespaced: true,
@@ -33,15 +32,3 @@ export default {
   actions,
   getters
 };
-
-/*
-indian
-chinese
-french
-mexican
-japanese
-greek
-spanish
-american
-mediterranean
-*/

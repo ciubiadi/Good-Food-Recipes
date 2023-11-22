@@ -25,7 +25,8 @@ export interface IMealsState {
 
 export interface ICoachesState {
   coaches: ICoach[],
-  lastFetch: number
+  lastFetch: number,
+  requests: any
 }
   
 export interface ICoach {
