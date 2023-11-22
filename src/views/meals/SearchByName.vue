@@ -1,6 +1,5 @@
 <script lang="ts">
 import { computed, ref } from 'vue';
-// import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import Meals from '../../components/meals/Meals.vue';
 export default {
@@ -8,17 +7,15 @@ export default {
     setup() {
         const keyword = ref("");
         const store = useStore();
-        const meals = computed(() => { console.log('storesbn', store); return store.state.meals.searchedMeals});
+        const meals = computed(() => { return store.state.meals.searchedMeals});
         
         const searchSomeMeals = () => {
-            // try {
             if (keyword.value) {
                 store.dispatch("meals/searchMeals", keyword.value);
             }
             else {
                 store.commit("meals/setSearchedMeals", []);
             }
-            // }
         };
         return {
             keyword,

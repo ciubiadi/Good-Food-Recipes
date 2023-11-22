@@ -8,9 +8,6 @@ export default {
     }
   }
 }
-// const props = defineProps({
-//     href: String,
-// })
 </script>
 
 <template>

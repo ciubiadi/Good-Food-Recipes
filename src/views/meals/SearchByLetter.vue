@@ -1,6 +1,5 @@
 <script lang="ts">
 import { computed, onMounted, watch } from 'vue';
-// import store from "../../store";
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import Meals from '../../components/meals/Meals.vue';
@@ -10,20 +9,12 @@ export default {
         const store = useStore();
         const route = useRoute();
         const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-        const meals = computed(() => {console.log('store-letter', store); return store.state.meals.mealsByLetter});
+        const meals = computed(() => store.state.meals.mealsByLetter);
         watch(route, () => {
-            console.log('BEFORE: SearchByLetter-watch:MEALS', meals)
-            console.log('SearchByLetter-watch:STORE', store)
             store.dispatch("meals/searchMealsByLetter", route.params.letter);
-            console.log('AFTER: SearchByLetter-watch:MEALS', meals)
-            console.log('SearchByLetter-watch:STORE', store)
         });
         onMounted(() => {
-            console.log('BEFORE: SearchByLetter-mounted:MEALS', meals)
-            console.log('SearchByLetter-mounted:STORE', store)
             store.dispatch("meals/searchMealsByLetter", route.params.letter);
-            console.log('AFTER: SearchByLetter-mounted:MEALS', meals)
-            console.log('SearchByLetter-mounted:STORE', store)
         });
         return {
             letters,

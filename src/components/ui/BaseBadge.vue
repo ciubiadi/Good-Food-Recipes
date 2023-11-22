@@ -5,12 +5,14 @@ export default {
     text() {
       return this.title.toUpperCase();
     }
+  },
+  mounted() {
   }
 }
 </script>
 
 <template>
-    <span class="badge" :class="type">
+    <span class="badge" :class="type.toLowerCase()">
       {{ text }}
     </span>
   </template>
@@ -25,18 +27,22 @@ export default {
     margin-right: 0.5rem;
   }
   
-  .frontend {
-    background-color: #008d21;
+  .vegan {
+    background-color: rgb(120, 142, 8);
     color: white;
   }
   
-  .backend {
-    background-color: #008d1f;
+  .chinese {
+    background-color: #139f00ae;
     color: white;
   }
   
-  .career {
-    background-color: #008d28;
+  .indian {
+    background-color: #0eba05;
+    color: white;
+  }
+  .mexican {
+    background-color: #209862;
     color: white;
   }
   </style>

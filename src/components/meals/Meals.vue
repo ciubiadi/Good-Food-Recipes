@@ -1,24 +1,12 @@
 <script lang="ts">
 import { computed } from 'vue';
 import MealItem from './MealItem.vue';
-// import { useStore } from 'vuex';
-// import { IMeal, IMealValue } from '../../utils/types';
 
-// const { meals } = defineProps({
-//     meals: {
-//         required: true,
-//         type: Array as () => any[]
-//     }
-// })  
 export default {
     props: ["meals"],
     setup(props) {
-        // const store = useStore();
         const mealsList = computed(() => { 
-            console.log('props.meals', props.meals)
             return props.meals;
-            // console.log('store-Meals.vue', store)
-            // return store.state.meals.searchedMeals;
         });
         return {
             mealsList,

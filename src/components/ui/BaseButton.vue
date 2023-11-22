@@ -36,7 +36,7 @@ export default {
     padding: 0.75rem 1.5rem;
     font: inherit;
     background-color: #006100;
-    @apply border-2;
+    @apply border-[0.1rem];
     border-color: #356100;
     /* border: 1px solid #3a0061; */
     color: white;

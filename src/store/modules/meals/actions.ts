@@ -54,15 +54,12 @@ export default {
       })
   },
   async searchMealsByIngredient({ commit, dispatch } : any, ingredient: string) {
-    console.log('searchMealsByIngredient-actions.ts:ingredient', ingredient);
     commit('setLoading', true);
     await axiosClient.get(`filter.php?i=${ingredient}`)
       .then(({ data }) => {
-        console.log('searchMealsByIngredient-actions.ts:DATA', data)
           data.meals.forEach((meal : IMealValue) => {
             dispatch('mealInstructionsChanger', meal)
               .then((response : any) => meal = response)     
-            console.log('meal yes', meal);
             // axiosClient.get(`lookup.php?i=${meal.idMeal}`)
             //   .then(({data}) => {
             // //     console.log('data getDetails', data.meals)
@@ -73,7 +70,6 @@ export default {
             // //     // return meal.strInstructinos = data.meals[0].strInstructinos
             //   })
           })
-        console.log('data.meals', data.meals)
         // commit('setMealsByIngredients', newMeals)
         commit('setMealsByIngredients', data.meals)
       })
@@ -90,7 +86,6 @@ export default {
           mealInfo.strInstructions = data.meals[0].strInstructions;
         return mealInfo;  
       })
-      console.log('mealInfo', mealInfo)
     return mealInfo;
   }
   // async getMealDetails(context : any, payload: any){

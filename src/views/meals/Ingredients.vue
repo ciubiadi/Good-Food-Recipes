@@ -2,7 +2,6 @@
 import { computed, onMounted, ref } from 'vue';
 import axiosClient from '../../utils/axiosClient';
 import { useRouter } from 'vue-router';
-// import store from '../../store';
 import { IIngredient } from '../../utils/types';
 import { useStore } from 'vuex';
 
@@ -12,8 +11,6 @@ const keyword = ref("");
 const ingredients = ref<IIngredient[]>([]);
 
 const computedIngredients = computed(() => {
-//   if (!computedIngredients) return ingredients;
-  console.log('ingredients-first', ingredients);
   return ingredients.value
     .filter((item: IIngredient | never) => typeof item !== 'undefined')
     .filter((item: IIngredient) => 
@@ -21,18 +18,7 @@ const computedIngredients = computed(() => {
   );
 });
 
-/*
-const computedIngredientsWithDescription = computed(() => {
-  if(!computedIngredientsWithDescription) return ingredients;
-  return ingredients.value.filter(item => {
-      return (item.strDescription || '').toLowerCase().includes(keyword.value.toLowerCase())) ||
-      item.strIngredient.toLowerCase().includes(keyword.value.toLowerCase());
-  }); 
-});
-*/
-
 function openIngredient(ingredient: IIngredient) {
-  console.log('-Ingredients-openIngr:Ingredient', ingredient)
   store.commit('meals/setIngredient', ingredient)
   router.push({
     name: "byIngredient",
@@ -41,8 +27,6 @@ function openIngredient(ingredient: IIngredient) {
 }
 
 onMounted(() => {
-  console.log('mounted-ingr-router', router);
-  console.log('mounted-ingr-store', store);
   axiosClient.get("list.php?i=list").then(({ data }) => {
     ingredients.value = data.meals;
   });
