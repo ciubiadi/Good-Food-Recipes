@@ -1,27 +1,51 @@
 <script lang="ts">
+import { computed, ref } from 'vue';
+import CoachFilter from '../../components/coaches/CoachFilter.vue';
 import CoachItem from '../../components/coaches/CoachItem.vue';
 import BaseButton from '../../components/ui/BaseButton.vue';
 import BaseCard from '../../components/ui/BaseCard.vue';
+// import store from '../../store';
+import { useStore } from 'vuex';
 
 export default {
-    computed: {
-        filteredCoaches() {
-            return this.$store.getters["coaches/coaches"];
-        },
-        hasCoaches() {
-            return this.$store.getters["coaches/hasCoaches"];
+    setup() {
+        const store = useStore();
+        const activeFilters = ref({
+            mexican: true,
+            vegan: false,
+            chinese: false,
+            indian: false
+        })
+        
+        const filteredCoaches = computed(() => store.getters['coaches/coaches'])
+        const hasCoaches = computed(() => store.getters['coaches/hasCoaches']);
+    
+        function setFilters(updatedFilters : any) {
+            activeFilters.value = updatedFilters;
+        }
+
+        return {
+            filteredCoaches,
+            hasCoaches,
+            setFilters
         }
     },
-    mounted() {
-        // console.log('this.filteredCoaches', this.filteredCoaches)
-    },
-    components: { CoachItem, BaseButton, BaseCard }
+    // computed: {
+    //     filteredCoaches() {
+    //         return this.$store.getters["coaches/coaches"];
+    //     },
+    //     hasCoaches() {
+    //         return this.$store.getters["coaches/hasCoaches"];
+    //     }
+    // },
+    components: { CoachItem, BaseButton, BaseCard, CoachFilter }
 }
 </script>
 
 <template>
     <section>
-        FILTER
+        <CoachFilter @change-filter="setFilters">
+        </CoachFilter>
     </section>
     <section>
         <BaseCard>

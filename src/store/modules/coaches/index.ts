@@ -33,3 +33,15 @@ export default {
   actions,
   getters
 };
+
+/*
+indian
+chinese
+french
+mexican
+japanese
+greek
+spanish
+american
+mediterranean
+*/
