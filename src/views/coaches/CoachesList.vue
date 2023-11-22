@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import CoachFilter from '../../components/coaches/CoachFilter.vue';
 import CoachItem from '../../components/coaches/CoachItem.vue';
 import BaseButton from '../../components/ui/BaseButton.vue';
@@ -10,24 +10,50 @@ import { useStore } from 'vuex';
 export default {
     setup() {
         const store = useStore();
-        const activeFilters = ref({
-            mexican: true,
-            vegan: false,
-            chinese: false,
-            indian: false
+        
+        const localState = ref({
+            isloading: false,
+            error: null,
+            activeFilters: {
+                mexican: true,
+                vegan: false,
+                chinese: false,
+                indian: false
+            }
         })
         
+        const isCoach = computed(() => store.getters['coaches/isCoach']);
         const filteredCoaches = computed(() => store.getters['coaches/coaches'])
-        const hasCoaches = computed(() => store.getters['coaches/hasCoaches']);
+        const hasCoaches = computed(() => !localState.value.isloading && store.getters['coaches/hasCoaches']);
     
         function setFilters(updatedFilters : any) {
-            activeFilters.value = updatedFilters;
+            localState.value.activeFilters = updatedFilters;
         }
 
+        async function loadCoaches(refresh = false) {
+            localState.value.isloading = true;
+            try {
+                console.log('refresh', refresh)
+                // await store.dispatch('coaches/loadCoaches', {
+                //     forceRefresh: refresh,
+                // });
+            } catch (error: any) {
+                localState.value.error = error.message || 'Something went wrong!';
+            }
+            localState.value.isloading = false;
+        }
+        
+        onMounted(() => {
+            loadCoaches();
+        })
+
         return {
+            isCoach,
             filteredCoaches,
             hasCoaches,
-            setFilters
+            setFilters,
+            loadCoaches,
+            isLoading: localState.value.isloading
         }
     },
     components: { CoachItem, BaseButton, BaseCard, CoachFilter }
@@ -42,10 +68,17 @@ export default {
     <section>
         <BaseCard>
             <div class="controls">
-                <BaseButton>Refresh</BaseButton>
-                <BaseButton link to="/register">Register as Coach</BaseButton>
+                <BaseButton mode="outline" @click="_ => loadCoaches(true)">
+                    Refresh
+                </BaseButton>
+                <BaseButton link to="/register">
+                    Register as Coach
+                </BaseButton>
             </div>
-            <ul v-if="hasCoaches">
+            <div v-if="isLoading">
+                Loading...
+            </div>
+            <ul v-else-if="hasCoaches">
                 <CoachItem 
                     v-for="coach in filteredCoaches" 
                     :key="coach.id" 
