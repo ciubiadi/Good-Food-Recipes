@@ -6,11 +6,11 @@ import BaseButton from '../../components/ui/BaseButton.vue';
 import BaseCard from '../../components/ui/BaseCard.vue';
 // import store from '../../store';
 import { useStore } from 'vuex';
+import { ICoach } from '../../utils/types';
 
 export default {
     setup() {
         const store = useStore();
-        
         const localState = ref({
             isloading: false,
             error: null,
@@ -22,14 +22,33 @@ export default {
             }
         })
         
-        const isCoach = computed(() => store.getters['coaches/isCoach']);
-        const filteredCoaches = computed(() => store.getters['coaches/coaches'])
+        const isCoach = computed(() => {
+            return store.getters['coaches/isCoach'];
+        });
+        const filteredCoaches = computed(() => {
+            const coaches = store.getters['coaches/coaches'];
+            return coaches.filter((coach: ICoach) => {
+                if (localState.value.activeFilters.mexican && coach.areas.includes('mexican')) {
+                    return true;
+                }
+                if (localState.value.activeFilters.vegan && coach.areas.includes('vegan')) {
+                    return true;
+                }
+                if (localState.value.activeFilters.chinese && coach.areas.includes('chinese')) {
+                    return true;
+                }
+                if (localState.value.activeFilters.indian && coach.areas.includes('indian')) {
+                    return true;
+                }
+                return false;
+            });
+        })
         const hasCoaches = computed(() => !localState.value.isloading && store.getters['coaches/hasCoaches']);
     
+        // Methods
         function setFilters(updatedFilters : any) {
             localState.value.activeFilters = updatedFilters;
         }
-
         async function loadCoaches(refresh = false) {
             localState.value.isloading = true;
             try {
@@ -40,6 +59,9 @@ export default {
                 localState.value.error = error.message || 'Something went wrong!';
             }
             localState.value.isloading = false;
+        }
+        function handleError() {
+            localState.value.error = null;
         }
         
         onMounted(() => {
@@ -52,7 +74,8 @@ export default {
             hasCoaches,
             setFilters,
             loadCoaches,
-            isLoading: localState.value.isloading
+            isLoading: localState.value.isloading,
+            handleError
         }
     },
     components: { CoachItem, BaseButton, BaseCard, CoachFilter }
