@@ -1,12 +1,15 @@
 <script lang="ts">
+import { computed } from 'vue';
+
 export default {
   props: ['type', 'title'],
-  computed: {
-    text() {
-      return this.title.toUpperCase();
+  setup(props){
+    const text = computed(() => props.title.toUpperCase());
+
+    return {
+      text,
+      type: props.type
     }
-  },
-  mounted() {
   }
 }
 </script>

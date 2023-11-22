@@ -11,9 +11,7 @@ export default {
         const meals = computed(() => store.state.searchedMeals);
         
         onMounted(async () => {
-            console.log("store-MealsData", store);
             store.dispatch("meals/searchMeals", "");
-            console.log("meals-MealsData", meals);
         });
 
         return {

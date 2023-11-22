@@ -4,17 +4,9 @@ import { useRoute } from 'vue-router';
 import axiosClient from '../../utils/axiosClient.js';
 import { IMealValue } from '../../utils/types.js';
 import YoutubeButton from '../../components/ui/YoutubeButton.vue';
-// import YoutubeButton from '../components/YoutubeButton.vue';
 
 const route = useRoute();
 const meal = ref<IMealValue | null>(null);
-
-onMounted(() => {
-  axiosClient.get(`lookup.php?i=${route.params.id}`)
-    .then(({ data }) => {
-      meal.value = data.meals[0] || null;
-    });
-});
 
 const getIngredient = (index: number): string | undefined => {
   const key = `strIngredient${index}` as keyof IMealValue;
@@ -27,6 +19,13 @@ const getMeasure = (index: number): string | undefined => {
   const value = meal.value ? meal.value[key] : undefined;
   return value !== null ? value : undefined as string | undefined;
 };
+
+onMounted(() => {
+  axiosClient.get(`lookup.php?i=${route.params.id}`)
+    .then(({ data }) => {
+      meal.value = data.meals[0] || null;
+    });
+});
 </script>
 
 <template>

@@ -30,14 +30,6 @@ export default {
             setFilters
         }
     },
-    // computed: {
-    //     filteredCoaches() {
-    //         return this.$store.getters["coaches/coaches"];
-    //     },
-    //     hasCoaches() {
-    //         return this.$store.getters["coaches/hasCoaches"];
-    //     }
-    // },
     components: { CoachItem, BaseButton, BaseCard, CoachFilter }
 }
 </script>
