@@ -1,15 +1,14 @@
 <script lang="ts">
-import { ref } from 'vue';
+import { ref, SetupContext } from 'vue';
 import BaseCard from '../ui/BaseCard.vue';
 
   export default {
-    // emits: ['change-filter'],
-    setup({ emit }: any) {
+    setup(_props: unknown, context: SetupContext<['change-filter']>) {
         const filters = ref({
-            mexican: true,
+            mexican: false,
             vegan: false,
             chinese: false,
-            indian: false
+            indian: true
         });
         
         function setFilter(event: any) {
@@ -20,7 +19,7 @@ import BaseCard from '../ui/BaseCard.vue';
                 [inputId]: isActive
             };
             filters.value = updatedFilters;
-            emit("change-filter", updatedFilters);
+            context.emit("change-filter", updatedFilters);
         }
 
         return {
@@ -36,7 +35,7 @@ import BaseCard from '../ui/BaseCard.vue';
   <BaseCard>
     <h2>Find Your Coach</h2>
     <span class="filter-option">
-      <input type="checkbox" id="mexican" checked @change="setFilter" />
+      <input type="checkbox" id="mexican" @change="setFilter" />
       <label for="mexican">Mexican</label>
     </span>
     <span class="filter-option">
@@ -48,7 +47,7 @@ import BaseCard from '../ui/BaseCard.vue';
       <label for="chinese">Chinese</label>
     </span>
     <span class="filter-option">
-      <input type="checkbox" id="indian" @change="setFilter" />
+      <input type="checkbox" id="indian" checked @change="setFilter" />
       <label for="indian">Indian</label>
     </span>
   </BaseCard>

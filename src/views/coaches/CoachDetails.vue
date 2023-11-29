@@ -73,9 +73,15 @@ export default {
       <section>
         <BaseCard>
           <BaseBadge v-for="area in areas" :key="area" :type="area" :title="area"></BaseBadge>
-          <p>{{ description }}</p>
+          <p class="coach-details-description">{{ description }}</p>
         </BaseCard>
       </section>
     </div>
-  </template>
+</template>
+
+<style scoped>
+.coach-details-description {
+  margin-top: 1em;
+}
+</style>
   

@@ -11,11 +11,11 @@ export default {
         const fullName = computed(() => `${props.firstName} ${props.lastName}`)
         const coachContactLink = computed(() => `${route.path}/${props.id}/contact`)
         const coachDetailsLink = computed(() => `${route.path}/${props.id}`)
-        
+
         return {
             fullName,
             coachContactLink,
-            coachDetailsLink
+            coachDetailsLink,
         }
     },
     components: { BaseBadge, BaseButton }
@@ -30,12 +30,16 @@ export default {
             <BaseBadge v-for="area in areas" :key="area" :type="area" :title="area"></BaseBadge>
         </div>
         <div class="actions">
-            <BaseButton mode="outline" :to="coachContactLink">
-                Contact
-            </BaseButton>
-            <BaseButton link :to="coachDetailsLink">
-                View Details
-            </BaseButton>
+            <router-link :to="coachContactLink">
+              <BaseButton mode="outline" :to="coachContactLink">
+                  Contact
+              </BaseButton>
+            </router-link>
+            <router-link :to="coachDetailsLink">
+              <BaseButton link :to="coachDetailsLink">
+                  View Details
+              </BaseButton>
+            </router-link>
         </div>
     </li>
 </template>

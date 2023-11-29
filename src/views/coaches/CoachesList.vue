@@ -15,10 +15,10 @@ export default {
             isloading: false,
             error: null,
             activeFilters: {
-                mexican: true,
+                mexican: false,
                 vegan: false,
                 chinese: false,
-                indian: false
+                indian: true
             }
         })
         

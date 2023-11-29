@@ -17,49 +17,49 @@ const isLinkActive = (path: string) => {
         <div class="flex items-center gap-1">
             <router-link
                 :to="{ name: 'home' }"
-                class="inline-flex items-center h-full px-5 transition-colors hover:bg-green-300 hover:text-white"
+                class="text-center inline-flex items-center h-full px-5 transition-colors hover:bg-green-300 hover:text-white"
                 :class="{ 'active-link': isLinkActive('/')}"
             >
                 Home
             </router-link>
             <router-link
                 :to="{ name: 'mealsData' }"
-                class="inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
+                class="text-center inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
                 :class="{ 'active-link': isLinkActive('/meals-data')}"
             >
                 Meals Table
             </router-link>
             <router-link
                 :to="{ name: 'byName' }"
-                class="inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
+                class="text-center inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
                 :class="{ 'active-link': isLinkActive('/by-name')}"  
             >
                 Search Meals
             </router-link>
             <router-link
                 :to="{ name: 'byLetter' }"
-                class="inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
+                class="text-center inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
                 :class="{ 'active-link': isLinkActive('/by-letter')}"  
             >
                 Meals By Letter
             </router-link>
             <router-link
                 :to="{ name: 'ingredients' }"
-                class="inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
+                class="text-center inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
                 :class="{ 'active-link': isLinkActive('/ingredients')}"
             >
                 Meals By Ingredients
             </router-link>
             <router-link
                 :to="{ name: 'coaches' }"
-                class="inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
+                class="text-center inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
                 :class="{ 'active-link': isLinkActive('/coaches')}"
             >
                 Coaches
             </router-link>
             <router-link
                 :to="{ name: 'requests' }"
-                class="inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
+                class="text-center inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
                 :class="{ 'active-link': isLinkActive('/requests')}"
             >
                 Requests

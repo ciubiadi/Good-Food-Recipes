@@ -5,7 +5,7 @@ export default {
         }
 
         const response = await fetch(
-            `https://vuecoaches-98971-default-rtdb.europe-west1.firebasedatabase.app/coaches.json`
+            `https://vuemealsandcooks-default-rtdb.europe-west1.firebasedatabase.app/coaches.json`
         );
         const responseData = await response.json();
 
@@ -33,7 +33,12 @@ export default {
     },
     
     async registerCoach(context: any, data: any) {
-        const userId = context.rootGetters.userId;
+        // const userId = context.rootGetters.userId;
+        // console.log('userId', userId);
+        // console.log('context', context);
+        
+        const userId = Date.now().toString(36) + Math.random().toString(36).substr(2)
+
         const coachData = {
           firstName: data.first,
           lastName: data.last,
@@ -43,7 +48,7 @@ export default {
         };
     
         const response = await fetch(
-          `https://vuecoaches-98971-default-rtdb.europe-west1.firebasedatabase.app/coaches/${userId}.json`,
+          `https://vuemealsandcooks-default-rtdb.europe-west1.firebasedatabase.app/coaches/${userId}.json`,
           {
             method: 'PUT',
             body: JSON.stringify(coachData)

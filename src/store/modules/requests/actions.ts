@@ -1,7 +1,7 @@
 export default {
     async fetchRequests(context: any) {
         const coachId = context.rootGetters.userId;
-        const response = await fetch(`https://vuecoaches-98971-default-rtdb.europe-west1.firebasedatabase.app/requests/${coachId}.json`);
+        const response = await fetch(`https://vuemealsandcooks-default-rtdb.europe-west1.firebasedatabase.app/requests/${coachId}.json`);
         const responseData = await response.json();
 
         if (!response.ok) {
@@ -31,7 +31,7 @@ export default {
           message: payload.message,
           coachId: null
         };
-        const response = await fetch(`https://vuecoaches-98971-default-rtdb.europe-west1.firebasedatabase.app/requests/${payload.coachId}.json`, {
+        const response = await fetch(`https://vuemealsandcooks-default-rtdb.europe-west1.firebasedatabase.app/requests/${payload.coachId}.json`, {
           method: 'POST',
           body: JSON.stringify(newRequest)
         });
