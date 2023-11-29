@@ -30,14 +30,14 @@ export default {
   }
   
   a {
-    color: #3d008d;
+    color: #008d28;
     text-decoration: none;
     font-weight: bold;
   }
   
   a:hover,
   a:active {
-    color: #8d007a;
+    color: #008d28;
   }
   
   p {

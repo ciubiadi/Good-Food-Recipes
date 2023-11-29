@@ -1,3 +1,47 @@
+<script lang="ts">
+import { ref, watch } from 'vue';
+
+export default {
+  props: {
+    show: {
+      type: Boolean,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: false,
+    },
+    fixed: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
+  emits: ['close'],
+  setup(props, { emit }) {
+    const show = ref(props.show);
+
+    const tryClose = () => {
+      if (props.fixed) {
+        return;
+      }
+      emit('close');
+    };
+
+    watch(() => props.show, (newValue) => {
+      show.value = newValue;
+    });
+
+    return {
+      tryClose,
+      show,
+      title: props.title,
+      fixed: props.fixed,
+    };
+  },
+};
+</script>
+
 <template>
     <teleport to="body">
       <div v-if="show" @click="tryClose" class="backdrop"></div>
@@ -21,41 +65,7 @@
     </teleport>
   </template>
   
-  <script lang="ts">
-  export default {
-    props: {
-      show: {
-        type: Boolean,
-        required: true,
-      },
-      title: {
-        type: String,
-        required: false,
-      },
-      fixed: {
-        type: Boolean,
-        required: false,
-        default: false,
-      },
-    },
-    emits: ['close'],
-    setup(props, context){
-        function tryClose() {
-            if (props.fixed) {
-              return;
-            }
-            context.emit('close');            
-        }
 
-        return {
-            tryClose,
-            show: props.show,
-            title: props.title,
-            fixed: props.fixed
-        }
-    }
-  };
-  </script>
   
   <style scoped>
   .backdrop {
@@ -84,7 +94,7 @@
   }
   
   header {
-    background-color: #3a0061;
+    background-color: #006124;
     color: white;
     width: 100%;
     padding: 1rem;

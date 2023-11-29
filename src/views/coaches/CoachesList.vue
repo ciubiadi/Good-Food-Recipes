@@ -4,85 +4,101 @@ import CoachFilter from '../../components/coaches/CoachFilter.vue';
 import CoachItem from '../../components/coaches/CoachItem.vue';
 import BaseButton from '../../components/ui/BaseButton.vue';
 import BaseCard from '../../components/ui/BaseCard.vue';
-// import store from '../../store';
 import { useStore } from 'vuex';
 import { ICoach } from '../../utils/types';
+import BaseSpinner from '../../components/ui/BaseSpinner.vue';
+import BaseDialog from '../../components/ui/BaseDialog.vue';
+
+interface LocalState {
+      isloading: boolean;
+      error: string | null;
+      activeFilters: {
+        mexican: boolean;
+        vegan: boolean;
+        chinese: boolean;
+        indian: boolean;
+      };
+    }
 
 export default {
-    setup() {
-        const store = useStore();
-        const localState = ref({
-            isloading: false,
-            error: null,
-            activeFilters: {
-                mexican: false,
-                vegan: false,
-                chinese: false,
-                indian: true
-            }
-        })
-        
-        const isCoach = computed(() => {
-            return store.getters['coaches/isCoach'];
-        });
-        const filteredCoaches = computed(() => {
-            const coaches = store.getters['coaches/coaches'];
-            return coaches.filter((coach: ICoach) => {
-                if (localState.value.activeFilters.mexican && coach.areas.includes('mexican')) {
-                    return true;
-                }
-                if (localState.value.activeFilters.vegan && coach.areas.includes('vegan')) {
-                    return true;
-                }
-                if (localState.value.activeFilters.chinese && coach.areas.includes('chinese')) {
-                    return true;
-                }
-                if (localState.value.activeFilters.indian && coach.areas.includes('indian')) {
-                    return true;
-                }
-                return false;
-            });
-        })
-        const hasCoaches = computed(() => !localState.value.isloading && store.getters['coaches/hasCoaches']);
-    
-        // Methods
-        function setFilters(updatedFilters : any) {
-            localState.value.activeFilters = updatedFilters;
-        }
-        async function loadCoaches(refresh = false) {
-            localState.value.isloading = true;
-            try {
-                await store.dispatch('coaches/loadCoaches', {
-                    forceRefresh: refresh,
-                });
-            } catch (error: any) {
-                localState.value.error = error.message || 'Something went wrong!';
-            }
-            localState.value.isloading = false;
-        }
-        function handleError() {
-            localState.value.error = null;
-        }
-        
-        onMounted(() => {
-            loadCoaches();
-        })
+  setup() {
+    const store = useStore();
+    const localState = ref<LocalState>({
+      isloading: false,
+      error: null,
+      activeFilters: {
+        mexican: false,
+        vegan: false,
+        chinese: false,
+        indian: true,
+      },
+    });
 
-        return {
-            isCoach,
-            filteredCoaches,
-            hasCoaches,
-            setFilters,
-            loadCoaches,
-            isLoading: localState.value.isloading,
-            handleError
+    const isCoach = computed(() => {
+      return store.getters['coaches/isCoach'];
+    });
+    const filteredCoaches = computed(() => {
+      const coaches = store.getters['coaches/coaches'];
+      return coaches.filter((coach: ICoach) => {
+        if (localState.value.activeFilters.mexican && coach.areas.includes('mexican')) {
+            return true;
         }
-    },
-    components: { CoachItem, BaseButton, BaseCard, CoachFilter }
-}
+        if (localState.value.activeFilters.vegan && coach.areas.includes('vegan')) {
+            return true;
+        }
+        if (localState.value.activeFilters.chinese && coach.areas.includes('chinese')) {
+            return true;
+        }
+        if (localState.value.activeFilters.indian && coach.areas.includes('indian')) {
+            return true;
+        }
+        return false;
+      });
+    });
+    const hasCoaches = computed(() => !localState.value.isloading && store.getters['coaches/hasCoaches']);
+
+    // Methods
+    function setFilters(updatedFilters: any) {
+      localState.value.activeFilters = updatedFilters;
+    }
+    async function loadCoaches(refresh = false) {
+      localState.value.isloading = true;
+      try {
+        await store.dispatch('coaches/loadCoaches', {
+          forceRefresh: refresh,
+        });
+      } catch (error: any) {
+        localState.value.error = error.message || 'Something went wrong!';
+      }
+      localState.value.isloading = false;
+    }
+    function handleError() {
+      localState.value.error = null;
+    }
+
+    onMounted(() => {
+      loadCoaches();
+    });
+
+    return {
+      isCoach,
+      filteredCoaches,
+      hasCoaches,
+      setFilters,
+      loadCoaches,
+      isLoading: localState.value.isloading,
+      handleError,
+      error: localState.value.error,
+    };
+  },
+  components: { CoachItem, BaseButton, BaseCard, CoachFilter, BaseSpinner, BaseDialog },
+};
 </script>
 
 <template>
+    <BaseDialog :show="!!error" title="An error occurred!" @close="handleError">
+      <p>{{ error }}</p>
+    </BaseDialog>
     <section>
         <CoachFilter @change-filter="setFilters">
         </CoachFilter>
@@ -98,7 +114,7 @@ export default {
                 </BaseButton>
             </div>
             <div v-if="isLoading">
-                Loading...
+                <BaseSpinner></BaseSpinner>
             </div>
             <ul v-else-if="hasCoaches">
                 <CoachItem 

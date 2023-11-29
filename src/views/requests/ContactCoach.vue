@@ -91,7 +91,7 @@ import { useStore } from 'vuex';
   input:focus,
   textarea:focus {
     border-color: #008d13;
-    background-color: #faf6ff;
+    background-color: #f6fffb;
     outline: none;
   }
   
