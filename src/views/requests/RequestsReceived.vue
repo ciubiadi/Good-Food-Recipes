@@ -2,14 +2,17 @@
 import { computed, onMounted, ref } from 'vue';
 import BaseCard from '../../components/ui/BaseCard.vue';
 import { useStore } from 'vuex';
+import BaseDialog from '../../components/ui/BaseDialog.vue';
+import RequestItem from '../../components/requests/RequestItem.vue';
+import BaseSpinner from '../../components/ui/BaseSpinner.vue';
 
 export default{
-    components: { BaseCard },
+    components: { BaseCard, BaseDialog, BaseSpinner, RequestItem },
     setup(){
         const store = useStore();
 
         const isLoading = ref(false);
-        const error = ref(null);
+        const error = ref<string | null>(null);
 
         const receivedRequests = computed(() => {
             return store.getters['requests/requests'];
@@ -53,19 +56,25 @@ export default{
 
 <template>
     <div>
-        <section>
-            <BaseCard>
-                <header>
-                    <h2>Requests Received</h2>
-                </header>
-                <div v-if="isLoading">Loading...</div>
-                <ul v-else-if="hasRequests && !isLoading">
-                    <pre>
-                        {{receivedRequests}}
-                    </pre>
-                </ul>
-                <h3 v-else>You haven't received any requests yet!</h3>
-            </BaseCard>
-        </section>
+      <BaseDialog :show="!!error" title="An error occurred!" @close="handleError">
+        <p>{{ error }}</p>
+      </BaseDialog>
+      <section>
+        <BaseCard>
+          <header>
+            <h2>Requests Received</h2>
+          </header>
+          <BaseSpinner v-if="isLoading"></BaseSpinner>
+          <ul v-else-if="hasRequests && !isLoading">
+            <RequestItem
+              v-for="req in receivedRequests"
+              :key="req.id"
+              :email="req.userEmail"
+              :message="req.message"
+            ></RequestItem>
+          </ul>
+          <h3 v-else>You haven't received any requests yet!</h3>
+        </BaseCard>
+      </section>
     </div>
-</template>
+  </template>
