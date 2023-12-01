@@ -1,21 +1,21 @@
 <script lang="ts">
 import { onMounted } from 'vue';
-import { computed } from '@vue/reactivity';
-import { useStore } from 'vuex';
+// import { computed } from '@vue/reactivity';
+// import { useStore } from 'vuex';
 import TableSidebar from '../../components/meals/TableSidebar.vue';
 import MealsTableSection from './MealsTableSection.vue';
 
 export default {
     setup() {
-        const store = useStore();
-        const meals = computed(() => store.state.searchedMeals);
+        // const store = useStore();
+        // const meals = computed(() => store.state.searchedMeals);
         
-        onMounted(async () => {
+        onMounted(() => {
             // store.dispatch("meals/searchMeals", "");
         });
 
         return {
-            meals
+            // meals
         };
     },
     components: { TableSidebar, MealsTableSection }

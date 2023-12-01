@@ -1,6 +1,5 @@
 <script lang="ts">
-import { computed } from '@vue/reactivity';
-// import store from "../../store";
+import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import MealsTable from '../../components/meals/MealsTable.vue';
 
@@ -12,16 +11,28 @@ import MealsTable from '../../components/meals/MealsTable.vue';
 // Export component options with TypeScript types
 export default {
     setup() {
+        const keyword = ref("");
         const store = useStore();
-        // Declare reactive state using ref
-        const meals = computed(() => store.state.searchedMeals);
-        // Method to increment the count
-        // const onUnpin = () => {
-        //   console.log('unpin');
-        // };
-        // Return reactive state and methods
+        const meals = computed(() => { return store.state.meals.searchedMeals});
+        
+        const searchSomeMeals = () => {
+            if (keyword.value) {
+                store.dispatch("meals/searchMeals", keyword.value);
+            }
+            else {
+                // store.commit("meals/setSearchedMeals", []);
+                store.dispatch("meals/searchMeals", '');
+            }
+        };
+
+        onMounted(() => {
+          store.dispatch("meals/searchMeals", '');
+        })
+
         return {
+            keyword,
             meals,
+            searchSomeMeals,
         };
     },
     components: { MealsTable }
@@ -41,6 +52,8 @@ export default {
               type="text" 
               class="rounded border-2 bg-white border-gray-200 focus:ring-green-500 focus:border-green-500 w-full"
               placeholder="Search for meals" 
+              v-model="keyword"
+              @change="searchSomeMeals"
           />
       </div>
     <br />
@@ -73,10 +86,10 @@ export default {
     </div>
 
     <!-- TABLE -->
-    <div class="panel panel-default">
-      <div class="table-responsive">
-        <MealsTable />
-      </div>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <!-- <div class="table-responsive"> -->
+        <MealsTable :meals="meals"/>
+      <!-- </div> -->
     </div>
     <div class="footer flex justify-between">
       <div class="page-size">
@@ -132,38 +145,9 @@ export default {
     /* border-radius:15px; */
 }
 
-.container-main-table .form-group {
-    text-align: center;
-    margin: auto;
-}
-
-.table .map-groups-rows {
-    border:2px solid black
-}
-.table .map-groups-rows .map-group-item {
-    /* background-color:#d0badb;  */
-    background-color:#d2c3d9; 
-    color:black; 
-    font-weight: bold;
-}
-
-.table .map-groups-rows-generalAdminGroup {
-    border:2px solid #5D3F6A;
-}
-
-.table .map-groups-rows-generalAdminGroup .map-group-item-generalAdminGroup {
-    background-color:#b19eba; 
-    color:#fff; 
-    font-weight: bolder;
-}
-
 @media only screen and (max-width: 991px) {
     .container-main-table {
         margin: 2em 0;
-    }
-
-    .container-main-table .form-group {
-        text-align: center;
     }
 }
 
