@@ -26,8 +26,18 @@ export interface IMealsState {
 export interface ICoachesState {
   coaches: ICoach[],
   lastFetch: number,
-  requests: any
+  // requests: any
 }
+
+export interface IRequestsState {
+  requests: IRequest[]
+}
+
+export interface IAuthState {
+  userId: string | null,
+  token: string | null,
+  didAutoLogout: boolean
+} 
   
 export interface ICoach {
   id: string,
@@ -36,6 +46,40 @@ export interface ICoach {
   areas: string[],
   description: string,
   hourlyRate: number
+}
+
+export interface IAuth {
+  email: string,
+  password: string,
+  returnSecureToken: boolean
+}
+
+export interface IAuthPayload {
+  mode: string;
+  email: string;
+  password: string;
+}
+
+export interface IAuthResponseData {
+  message?: string;
+  expiresIn: string;
+  idToken: string;
+  localId: string;
+}
+
+export interface IAuthResponsePayload {
+  idToken : string,
+  email: string,
+  refreshToken: string,
+  expiresIn: string,
+  localId: string
+}
+
+export interface IRequest {
+  id: string | number,
+  userEmail: string,
+  message: string,
+  coachId: string | number,
 }
 
 export interface IMealValue {

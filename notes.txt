@@ -5,6 +5,8 @@ PREREQUISITES :
 - TailwindCSS Forms : https://github.com/tailwindlabs/tailwindcss-forms
 - TheMealDB recipe API : https://themealdb.com/api.php
 - use axios for fetching : https://www.npmjs.com/package/axios
+- Firebase for database
+- Firebase auth REST Api : https://firebase.google.com/docs/reference/rest/auth#section-create-email-password
 
 Logic :
 - The ingredients will be saved in vuex and then retrieved from there     

@@ -1,8 +1,8 @@
 <script lang="ts">
-import { computed } from '@vue/reactivity';
 // import store from '../../store/';
-import { useStore } from 'vuex';
 import { IMealValue } from '../../utils/types';
+import { onMounted, ref } from 'vue';
+import axiosClient from '../../utils/axiosClient';
 
 // interface PinnedMeals {
 //     pinnedMeals: IMeal[]
@@ -17,19 +17,29 @@ import { IMealValue } from '../../utils/types';
 export default {
   // setup(): PinnedMeals & SidebarMethods {
   setup() {
-    const store = useStore();
-    // Declare reactive state using ref
-    const pinnedMeals = computed(() => { console.log('sstore', store); return store.state.searchedMeals});
-
+    // const store = useStore();
+    // // Declare reactive state using ref
+    // const pinnedMeals = computed(() => { console.log('sstore', store); return store.state.searchedMeals});
+    const pinnedMeals = ref<IMealValue[]>([]);
     // Method to increment the count
     const onUnpin = (meal: IMealValue) => {
       console.log('TableSidebar-onUnpin-meal', meal)
     };
 
+    onMounted(async () => {
+      for (let i = 0; i < 10; i++) {
+        axiosClient
+          .get(`random.php`)
+          .then(({ data }) => { 
+            return pinnedMeals.value.push(data.meals[0])
+          });
+      }
+    })
+
     // Return reactive state and methods
     return {
         pinnedMeals,
-        onUnpin,
+        onUnpin
     };
   },
 };

@@ -34,7 +34,7 @@ export default {
             <h3 class="font-bold">{{ mealDetail.strMeal }}</h3>
             <p class="mb-4">
                 <!-- {{ truncateWords(meal.strInstructions, 20) + ' (...)' }} -->
-                {{ typeof instructions != undefined ? instructions + ' (...)' : 'No description available, please open the meal for more details.'}}
+                {{ (typeof instructions !== undefined) || (instructions !== undefined) ? instructions + ' (...)' : 'No description available, please open the meal for more details.'}}
             </p> 
             <div class="flex items-center justify-between">
                 <YoutubeButton :href="mealDetail.strYoutube">Youtube</YoutubeButton>

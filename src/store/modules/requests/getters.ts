@@ -1,7 +1,7 @@
-import { ICoachesState } from "../../../utils/types";
+import { IRequestsState } from "../../../utils/types";
 
 export default {
-  requests(state: ICoachesState, _: any, _2: any, rootGetters: any) {
+  requests(state: IRequestsState, _: any, _2: any, rootGetters: any) {
     const coachId = rootGetters.userId;
     return state.requests.filter((req: any) => req.coachId === coachId);
   },

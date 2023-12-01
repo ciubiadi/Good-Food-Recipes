@@ -30,9 +30,7 @@ export default {
         return selectedCoach.value ? selectedCoach.value.description : '';
       })
       const contactLink = computed(() => {
-        console.log('route', route)
-        console.log('props', props)
-        return selectedCoach.value ? `${route.path}` : "";
+        return selectedCoach.value ? `${route.path}/${props.id}/contact` : "";
       })
 
       onMounted(() => {

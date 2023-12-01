@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router';
 import axiosClient from '../../utils/axiosClient.js';
 import { IMealValue } from '../../utils/types.js';
 import YoutubeButton from '../../components/ui/YoutubeButton.vue';
+import BaseButton from '../../components/ui/BaseButton.vue';
 
 const route = useRoute();
 const meal = ref<IMealValue | null>(null);
@@ -79,13 +80,14 @@ onMounted(() => {
                 <YoutubeButton :href="meal.strYoutube">YouTube</YoutubeButton>
             </div>
             <div class="mt-4">
-                <a 
-                    :href="meal.strSource" 
-                    class="inline-block px-4 py-2 border-2 border-green-500 rounded-md text-blue-900 hover:bg-green-200 hover:border-green-300 transition-colors text-sm font-medium"
+                <BaseButton 
+                    :href="meal.strSource"
+                    type="button" 
+                    mode="flat"
                     target="_blank"
                 >
                     View Original Source
-                </a>
+                </BaseButton>
             </div>
         </div>
     </div>

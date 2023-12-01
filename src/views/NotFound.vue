@@ -13,6 +13,8 @@ export default{
             <p>
                 This page could not be found - maybe check out all our
                 <router-link to="/coaches">coaches</router-link>.
+                 or our 
+                <router-link to="/">meals</router-link>.
             </p>
         </BaseCard>
     </section>

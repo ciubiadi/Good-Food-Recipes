@@ -1,15 +1,12 @@
 <script lang="ts">
-// import store from '../../store';
 import { computed, onMounted } from 'vue';
 import MealsTableItem from './MealsTableItem.vue';
 import { useStore } from 'vuex';
 
-// Define types for methods
 // interface SidebarMethods {
 //   onUnpin: (meal: IMeal) => void;
 // }
 
-// Export component options with TypeScript types
 export default {
     setup() {
         const store = useStore();

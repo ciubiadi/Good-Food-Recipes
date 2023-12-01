@@ -35,10 +35,10 @@ export default {
     color: white;
   }
   
-  .chinese {
+  /* .chinese {
     background-color: #139f00ae;
     color: white;
-  }
+  } */
   
   .indian {
     background-color: #05baa8;
