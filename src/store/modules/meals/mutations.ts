@@ -1,8 +1,6 @@
 import { IIngredient, IMealValue, IStoreState } from "../../../utils/types";
   export default {
     setSearchedMeals(state: IStoreState, meals: IMealValue[]) {
-      console.log('setSearchedMeals-mutations.ts:STATE', state)
-      console.log('setSearchedMeals-mutations.ts:MEALS', meals)
       state.searchedMeals = meals || [];
       state.loading = false;
     },

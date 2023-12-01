@@ -10,7 +10,6 @@ export default {
   props: ['meal'],
   setup(props) {
     const onDetails = () => {
-      // Implement your logic for handling details button click
       console.log('Details clicked for meal:', props.meal);
     };
 

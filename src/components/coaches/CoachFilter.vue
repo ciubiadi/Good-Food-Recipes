@@ -5,9 +5,8 @@ import BaseCard from '../ui/BaseCard.vue';
   export default {
     setup(_props: unknown, context: SetupContext<['change-filter']>) {
         const filters = ref({
-            mexican: false,
-            vegan: false,
-            chinese: false,
+            mexican: true,
+            vegan: true,
             indian: true
         });
         
@@ -35,16 +34,12 @@ import BaseCard from '../ui/BaseCard.vue';
   <BaseCard>
     <h2>Find Your Coach</h2>
     <span class="filter-option">
-      <input type="checkbox" id="mexican" @change="setFilter" />
+      <input type="checkbox" id="mexican" checked @change="setFilter" />
       <label for="mexican">Mexican</label>
     </span>
     <span class="filter-option">
-      <input type="checkbox" id="vegan" @change="setFilter" />
+      <input type="checkbox" id="vegan" checked @change="setFilter" />
       <label for="vegan">Vegan</label>
-    </span>
-    <span class="filter-option">
-      <input type="checkbox" id="chinese" @change="setFilter" />
-      <label for="chinese">Chinese</label>
     </span>
     <span class="filter-option">
       <input type="checkbox" id="indian" checked @change="setFilter" />

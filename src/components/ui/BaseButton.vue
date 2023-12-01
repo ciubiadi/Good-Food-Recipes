@@ -57,8 +57,9 @@ export default {
   
   .flat {
     background-color: transparent;
-    color: #00610b;
-    border: none;
+    /* color: #00610b; */
+    /* border: none; */
+    @apply px-4 py-2 border-2 border-green-500 rounded-md text-blue-900 hover:bg-green-200 hover:border-green-300 transition-colors text-sm
   }
   
   .outline {

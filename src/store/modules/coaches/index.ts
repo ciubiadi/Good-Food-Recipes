@@ -9,11 +9,11 @@ export default {
       coaches: [
         {
           id: 'c1',
-          firstName: 'Adrian',
-          lastName: 'Ciubucciu',
-          areas: ['Mexican', 'Vegan', 'Chinese'],
+          firstName: 'Robert',
+          lastName: 'Jonas',
+          areas: ['Mexican', 'Vegan', 'Indian'],
           description:
-            "I'm Adrian and I've worked as a cook for 10 years. Let me help you become a cook as well!",
+            "I'm Robert and I've worked as a cook for 10 years. Let me help you become a cook as well!",
           hourlyRate: 30
         },
         {
@@ -23,7 +23,7 @@ export default {
           areas: ['Vegan', 'Indian'],
           description:
             'I am Julie and as a senior cook with 10+ years experience, I can help you get your first job or progress in your current role.',
-          hourlyRate: 30
+          hourlyRate: 20
         }
       ]
     };

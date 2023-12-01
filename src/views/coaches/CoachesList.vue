@@ -15,7 +15,6 @@ interface LocalState {
       activeFilters: {
         mexican: boolean;
         vegan: boolean;
-        chinese: boolean;
         indian: boolean;
       };
     }
@@ -27,9 +26,8 @@ export default {
       isloading: false,
       error: null,
       activeFilters: {
-        mexican: false,
-        vegan: false,
-        chinese: false,
+        mexican: true,
+        vegan: true,
         indian: true,
       },
     });
@@ -44,9 +42,6 @@ export default {
             return true;
         }
         if (localState.value.activeFilters.vegan && coach.areas.includes('vegan')) {
-            return true;
-        }
-        if (localState.value.activeFilters.chinese && coach.areas.includes('chinese')) {
             return true;
         }
         if (localState.value.activeFilters.indian && coach.areas.includes('indian')) {

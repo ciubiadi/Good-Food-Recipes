@@ -1,5 +1,6 @@
 <script lang="ts">
 import { ref, Ref, watch, SetupContext } from 'vue';
+import BaseButton from '../ui/BaseButton.vue';
 
 interface FormData {
   val: string | null | number;
@@ -15,82 +16,77 @@ interface Refs {
 }
 
 export default {
-  emits: ['save-data'],
-  setup(_props: unknown, context: SetupContext<['save-data']>) {
-    const refs: Refs = {
-      firstName: ref({ val: '', isValid: true }),
-      lastName: ref({ val: '', isValid: true }),
-      description: ref({ val: '', isValid: true }),
-      rate: ref({ val: null, isValid: true } as FormData),
-      areas: ref({ val: [], isValid: true }),
-    };
-    const formIsValid = ref(true);
-
-    const clearValidity = (input: keyof Refs) => {
-      const target = refs[input];
-      if (target) {
-        target.value.isValid = true;
-      }
-    };
-
-    const validateForm = () => {
-      formIsValid.value = true;
-      if (refs.firstName.value.val === '') {
-        refs.firstName.value.isValid = false;
-        formIsValid.value = false;
-      }
-      if (refs.lastName.value.val === '') {
-        refs.lastName.value.isValid = false;
-        formIsValid.value = false;
-      }
-      if (refs.description.value.val === '') {
-        refs.description.value.isValid = false;
-        formIsValid.value = false;
-      }
-      if (typeof refs.rate.value.val !== 'number' || refs.rate.value.val < 0) { 
-        refs.rate.value.isValid = false;
-        formIsValid.value = false;
-      }
-      if (refs.areas.value.val.length === 0) {
-        refs.areas.value.isValid = false;
-        formIsValid.value = false;
-      }
-    };
-
-    const submitForm = () => {
-      validateForm();
-
-      if (!formIsValid.value) {
-        return;
-      }
-
-      const formData = {
-        first: refs.firstName.value.val,
-        last: refs.lastName.value.val,
-        desc: refs.description.value.val,
-        rate: refs.rate.value.val,
-        areas: refs.areas.value.val,
-      };
-
-      context.emit('save-data', formData);
-    };
-
-    // Watch for changes in reactive values and clear validity when the input changes
-    watch([refs.firstName, refs.lastName, refs.description, refs.rate, refs.areas], () => {
-      clearValidity('firstName');
-      clearValidity('lastName');
-      clearValidity('description');
-      clearValidity('rate');
-      clearValidity('areas');
-    });
-
-    return {
-      ...refs,
-      formIsValid,
-      clearValidity,
-      submitForm,
-    };
-  },
+    emits: ["save-data"],
+    setup(_props: unknown, context: SetupContext<[
+        "save-data"
+    ]>) {
+        const refs: Refs = {
+            firstName: ref({ val: "", isValid: true }),
+            lastName: ref({ val: "", isValid: true }),
+            description: ref({ val: "", isValid: true }),
+            rate: ref({ val: null, isValid: true } as FormData),
+            areas: ref({ val: [], isValid: true }),
+        };
+        const formIsValid = ref(true);
+        const clearValidity = (input: keyof Refs) => {
+            const target = refs[input];
+            if (target) {
+                target.value.isValid = true;
+            }
+        };
+        const validateForm = () => {
+            formIsValid.value = true;
+            if (refs.firstName.value.val === "") {
+                refs.firstName.value.isValid = false;
+                formIsValid.value = false;
+            }
+            if (refs.lastName.value.val === "") {
+                refs.lastName.value.isValid = false;
+                formIsValid.value = false;
+            }
+            if (refs.description.value.val === "") {
+                refs.description.value.isValid = false;
+                formIsValid.value = false;
+            }
+            if (typeof refs.rate.value.val !== "number" || refs.rate.value.val < 0) {
+                refs.rate.value.isValid = false;
+                formIsValid.value = false;
+            }
+            if (refs.areas.value.val.length === 0) {
+                refs.areas.value.isValid = false;
+                formIsValid.value = false;
+            }
+        };
+        const submitForm = () => {
+            validateForm();
+            if (!formIsValid.value) {
+                return;
+            }
+            const formData = {
+                first: refs.firstName.value.val,
+                last: refs.lastName.value.val,
+                desc: refs.description.value.val,
+                rate: refs.rate.value.val,
+                areas: refs.areas.value.val,
+            };
+            context.emit("save-data", formData);
+        };
+        // Watch for changes in reactive values and clear validity when the input changes
+        watch([refs.firstName, refs.lastName, refs.description, refs.rate, refs.areas], () => {
+            clearValidity("firstName");
+            clearValidity("lastName");
+            clearValidity("description");
+            clearValidity("rate");
+            clearValidity("areas");
+        });
+        return {
+            ...refs,
+            formIsValid,
+            clearValidity,
+            submitForm,
+        };
+    },
+    components: { BaseButton }
 };
 </script>
 
@@ -129,7 +125,7 @@ export default {
     <div class="form-control" :class="{ invalid: !rate.isValid }">
       <label for="rate">Rate</label>
       <input
-        type="text"
+        type="number"
         id="rate"
         v-model.trim="rate.val"
         @blur="clearValidity('rate')"
@@ -171,7 +167,7 @@ export default {
       <p v-if="!areas.isValid">At least one expertise must be selected.</p>
     </div>
     <p v-if="!formIsValid">Please fix the above errors and submit again.</p>
-    <base-button>Register</base-button>
+    <BaseButton>Register</BaseButton>
   </form>
 </template>
 
