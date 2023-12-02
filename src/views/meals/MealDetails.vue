@@ -81,10 +81,13 @@ onMounted(() => {
             </div>
             <div class="mt-4">
                 <BaseButton 
-                    :href="meal.strSource"
+                    v-if="meal.strSource && meal.strSource != ''"
+                    link 
                     type="button" 
                     mode="flat"
                     target="_blank"
+                    :isTrueLink=true
+                    :to="meal.strSource"
                 >
                     View Original Source
                 </BaseButton>

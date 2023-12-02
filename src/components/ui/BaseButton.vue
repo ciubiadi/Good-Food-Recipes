@@ -15,6 +15,10 @@ export default {
       type: String,
       required: false,
       default: '/'
+    },
+    isTrueLink: {
+      type: Boolean,
+      required: false
     }
   }
 }
@@ -24,6 +28,9 @@ export default {
     <button v-if="!link" :class="mode">
       <slot></slot>
     </button>
+    <a v-if="isTrueLink" :href="to" :class="mode">
+      <slot></slot>
+    </a>
     <router-link v-else :to="to" :class="mode">
       <slot></slot>
     </router-link>
