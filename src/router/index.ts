@@ -31,6 +31,7 @@ const routes: RouteRecordRaw[] = [
           path: '/meals-data',
           name: 'mealsData',
           component: MealsDataVue,
+          meta: { requiresAuth: true }
       },
       {
           path: '/by-name/:name?',

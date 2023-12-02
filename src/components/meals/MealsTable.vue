@@ -1,24 +1,8 @@
 <script lang="ts">
-// import { computed } from 'vue';
 import MealsTableItem from './MealsTableItem.vue';
 import { computed } from 'vue';
 
-// interface SidebarMethods {
-//   onUnpin: (meal: IMeal) => void;
-// }
-
 export default {
-    // props: {
-    //     meals: {
-    //         type: Array<IMealValue>
-    //     } 
-    // },
-    // setup(props) {
-    //     return {
-    //         meals: props.meals,
-    //     };
-    // },
-    // components: { MealsTableItem }
     props: ["meals"],
     setup(props) {
         const mealsList = computed(() => {

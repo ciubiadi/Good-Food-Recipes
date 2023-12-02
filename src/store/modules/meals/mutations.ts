@@ -18,5 +18,14 @@ import { IIngredient, IMealValue, IStoreState } from "../../../utils/types";
     },
     setLoading(state: IStoreState, isLoading: boolean) {
       state.loading = isLoading;
-    }
+    },
+    setPinnedMeals(state: any, payload: any) {
+      state.pinnedMeals = payload;
+    },
+    addPinnedMeal(state: IStoreState, payload: any) {
+      state.pinnedMeals.push(payload);
+    },
+    removePinnedMeal(state: IStoreState, mealId: string) {
+      state.pinnedMeals = state.pinnedMeals.filter((meal: IMealValue) => meal.idMeal !== mealId);
+    },
   };

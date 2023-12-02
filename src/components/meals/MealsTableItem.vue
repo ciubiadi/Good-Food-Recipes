@@ -1,21 +1,33 @@
 <script lang="ts">
 import { computed } from 'vue';
 import BaseButton from '../ui/BaseButton.vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
 
 export default {
     props: ["meal"],
     setup(props) {
-        const meal = computed(() => {
-            return props.meal;
-        });
-        const onDetails = () => {
-            console.log("View Details");
-        };
-        return {
-            meal,
-            onDetails
-        };
+      const store = useStore();
+      const router = useRouter();
+
+      const meal = computed(() => {
+          return props.meal;
+      });
+      const onDetails = () => {
+          router.push(`/meal/${props.meal.idMeal}`);
+      };
+      const onPinMeal = () => {
+        if(store.getters['meals/pinnedMeals'].length == 5)
+          alert('You can pin maximum 5 meal recipes!');
+        else 
+          store.dispatch('meals/pinMeal', meal.value);
+      }
+      return {
+          meal,
+          onDetails,
+          onPinMeal
+      };
     },
     components: { BaseButton }
 };
@@ -34,8 +46,8 @@ export default {
     <td class="px-6 py-4">{{meal.strArea}}</td>
     <td class="px-6 py-4">{{meal.strTags}}</td>
     <td class="px-6 py-4">
-      <BaseButton mode="flat">Pin</BaseButton>
-      <BaseButton mode="flat">
+      <BaseButton mode="flat" @click="onPinMeal">Pin</BaseButton>
+      <BaseButton mode="flat" @click="onDetails">
         View
       </BaseButton>
     </td>
