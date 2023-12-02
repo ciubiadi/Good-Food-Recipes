@@ -18,7 +18,8 @@ export default {
     },
     isTrueLink: {
       type: Boolean,
-      required: false
+      required: false,
+      default: false
     }
   }
 }
@@ -28,12 +29,15 @@ export default {
     <button v-if="!link" :class="mode">
       <slot></slot>
     </button>
-    <a v-if="isTrueLink" :href="to" :class="mode">
-      <slot></slot>
-    </a>
-    <router-link v-else :to="to" :class="mode">
-      <slot></slot>
-    </router-link>
+    <template v-else>
+      <a v-if="isTrueLink" :href="to" :class="mode">
+        <slot></slot>
+      </a>
+      <router-link v-else :to="to" :class="mode">
+        <slot></slot>
+      </router-link>
+    </template>
+    
   </template>
   
   <style scoped>
