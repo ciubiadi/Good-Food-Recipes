@@ -21,10 +21,9 @@ export default {
 };
 </script>
 <template>
-    <!-- <pre>{{ meal }}</pre> -->
     <td class="w-4 p-4">
         <div class="flex items-center">
-            <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+            <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 focus:ring-2">
             <label for="checkbox-table-1" class="sr-only">checkbox</label>
         </div>
     </td>
@@ -37,7 +36,7 @@ export default {
     <td class="px-6 py-4">
       <BaseButton mode="flat">Pin</BaseButton>
       <BaseButton mode="flat">
-        View Details
+        View
       </BaseButton>
     </td>
 </template>

@@ -72,6 +72,6 @@ export default {
   .flat:active,
   .outline:hover,
   .outline:active {
-    background-color: #d2ffde;
+    background-color: #d2ffdd;
   }
   </style>

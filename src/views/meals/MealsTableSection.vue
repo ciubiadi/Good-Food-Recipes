@@ -3,39 +3,63 @@ import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import MealsTable from '../../components/meals/MealsTable.vue';
 
-// Define types for methods
-// interface SidebarMethods {
-//   onUnpin: (meal: IMeal) => void;
-// }
-
-// Export component options with TypeScript types
 export default {
-    setup() {
-        const keyword = ref("");
-        const store = useStore();
-        const meals = computed(() => { return store.state.meals.searchedMeals});
-        
-        const searchSomeMeals = () => {
-            if (keyword.value) {
-                store.dispatch("meals/searchMeals", keyword.value);
-            }
-            else {
-                // store.commit("meals/setSearchedMeals", []);
-                store.dispatch("meals/searchMeals", '');
-            }
-        };
+  setup() {
+    const keyword = ref("");
+    const store = useStore();
+    const currentPage = ref(1);
+    const itemsPerPage = ref(10); // Default number of items per page
+    const entriesPerPageOptions = [10, 15, 25]; // You can customize these options
+    const paginatedMeals = computed(() => {
+      const startIndex = (currentPage.value - 1) * itemsPerPage.value;
+      const endIndex = Math.min(startIndex + itemsPerPage.value - 1, meals.value.length - 1);
+      return meals.value.slice(startIndex, endIndex + 1);
+    });
 
-        onMounted(() => {
-          store.dispatch("meals/searchMeals", '');
-        })
+    const meals = computed(() => {
+      return store.state.meals.searchedMeals;
+    });
 
-        return {
-            keyword,
-            meals,
-            searchSomeMeals,
-        };
-    },
-    components: { MealsTable }
+    const startIndex = computed(() => (currentPage.value - 1) * itemsPerPage.value);
+    const endIndex = computed(() => Math.min(startIndex.value + itemsPerPage.value - 1, meals.value.length - 1));
+    const totalPages = computed(() => Math.ceil(meals.value.length / itemsPerPage.value));
+
+    const searchSomeMeals = () => {
+      if (keyword.value) {
+        store.dispatch("meals/searchMeals", keyword.value);
+      } else {
+        store.dispatch("meals/searchMeals", '');
+      }
+    };
+
+    const changePage = (page: number) => {
+      currentPage.value = page;
+    };
+
+    const updatePage = () => {
+      currentPage.value = 1; // Reset to the first page when changing items per page
+    };
+
+    onMounted(() => {
+      store.dispatch("meals/searchMeals", '');
+    });
+
+    return {
+      keyword,
+      meals,
+      searchSomeMeals,
+      paginatedMeals,
+      currentPage,
+      itemsPerPage,
+      startIndex,
+      endIndex,
+      changePage,
+      updatePage,
+      totalPages,
+      entriesPerPageOptions,
+    };
+  },
+  components: { MealsTable },
 };
 </script>
 <template>
@@ -53,12 +77,12 @@ export default {
               class="rounded border-2 bg-white border-gray-200 focus:ring-green-500 focus:border-green-500 w-full"
               placeholder="Search for meals" 
               v-model="keyword"
-              @change="searchSomeMeals"
+              @keyup="searchSomeMeals"
           />
       </div>
     <br />
 
-    <div class="filters-section">
+    <!-- <div class="filters-section">
       <h3>Filters</h3>
       <div class="filters flex justify-between">
         <div class="filter-tabs">
@@ -69,7 +93,6 @@ export default {
             class="btn btn-secondary"
 
           >
-            <!-- {{ office }} -->
             Tag
           </button>
         </div>
@@ -79,40 +102,39 @@ export default {
           </button>
         </div>
       </div>
-    </div>
-    <div class="number-of-entries">
-      <i>There are {{ meals.length }} total meals</i>
-      <p></p>
-    </div>
+    </div> -->
 
     <!-- TABLE -->
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-      <!-- <div class="table-responsive"> -->
-        <MealsTable :meals="meals"/>
-      <!-- </div> -->
-    </div>
-    <div class="footer flex justify-between">
-      <div class="page-size">
-        Show
-        <select id="selectNumbeOfEntries">
-          <option value="5">5</option>
-          <option value="10" selected>10</option>
-          <option value="15">15</option>
-          <option value="25">25</option>
-          <option value="50">50</option>
-        </select>
-        entries
-      </div>
-      <div class="page-number">
-        Page 
-        <!-- {{ this.currentPage }}/{{ this.rows.length / this.pageSize % 1 != 0
-          ? Math.trunc(meals.length / this.pageSize) + 1
-          : Math.round(meals.length / this.pageSize) }} -->
-      </div>
-      <div class="pagination-buttons">
-        <button class="btn btn-info">Previous</button>
-        <button class="btn btn-info">Next</button>
-      </div>
+      <MealsTable :meals="paginatedMeals" />
+      <nav class="flex items-center justify-between p-4" aria-label="Table navigation">
+        <div class="">
+          <label for="entriesPerPage">Show entries per page : </label>
+          <select id="entriesPerPage" v-model="itemsPerPage" @change="updatePage">
+            <option v-for="option in entriesPerPageOptions" :key="option" :value="option">{{ option }}</option>
+          </select>
+        </div>
+        <span class="text-md font-normal italic text-gray-500 m-auto">
+          Showing {{ startIndex + 1 }} - {{ endIndex + 1 }} of {{ meals.length }} meals
+        </span>
+        <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+          <li v-if="currentPage > 1">
+            <button @click="changePage(currentPage - 1)" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-green-100 hover:text-green-700">
+              Previous
+            </button>
+          </li>
+          <li v-for="page in totalPages" :key="page">
+            <button @click="changePage(page)" :class="{ ' text-green-800 bg-green-50 ' : page === currentPage }" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border border-gray-300 hover:bg-green-100 hover:text-green-700">
+              {{ page }}
+            </button>
+          </li>
+          <li v-if="currentPage < totalPages">
+            <button @click="changePage(currentPage + 1)" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-green-100 hover:text-green-700">
+              Next
+            </button>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </template>
@@ -143,6 +165,32 @@ export default {
 .create-group .btn{
     margin-left: 0.5em;
     /* border-radius:15px; */
+}
+
+#entriesPerPage {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  border-radius: 0.25em;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+/* Style to match the button style */
+#entriesPerPage:hover {
+  background-color: #f7fafc;
+  border-color: #a0aec0;
+}
+
+#entriesPerPage:focus {
+  box-shadow: 0 0 0 2px #4fd1c5;
+}
+
+/* Style when an option is selected */
+#entriesPerPage:active,
+#entriesPerPage:visited {
+  background-color: #f7fafc;
+  border-color: #a0aec0;
 }
 
 @media only screen and (max-width: 991px) {

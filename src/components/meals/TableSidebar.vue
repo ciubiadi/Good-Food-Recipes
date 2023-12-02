@@ -64,10 +64,11 @@ export default {
 
 <style scoped>
 .custom-container-sidebar {
-    height: 100vh; 
-    border-right:1px solid #f5dbff;
-    @apply bg-green-50;
-     padding-bottom: 3em;
+  min-height: 100vh; 
+  height: auto; 
+  border-right:1px solid #f5dbff;
+  @apply bg-green-50;
+    padding-bottom: 3em;
 }
 
 .list-meals{
@@ -81,9 +82,10 @@ export default {
 
 @media only screen and (max-width: 991px) {
     .custom-container-sidebar {
-        height: 100vh; 
-        border-right:1px solid #f5dbff;
-        @apply bg-green-50;
+      min-height: 100vh; 
+      height: auto; 
+      border-right:1px solid #f5dbff;
+      @apply bg-green-50;
     } 
     .custom-container-sidebar .map-group {
         margin-bottom: 2em;
