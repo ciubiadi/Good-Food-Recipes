@@ -30,8 +30,12 @@ export default {
         return selectedCoach.value ? selectedCoach.value.description : '';
       })
       const contactLink = computed(() => {
-        return selectedCoach.value ? `${route.path}/${props.id}/contact` : "";
+        return selectedCoach.value ? `${route.path}/contact` : "";
       })
+
+      const isOnContact = () => {
+        return !route.path.endsWith('/contact');
+      }
 
       onMounted(() => {
         selectedCoach.value = store.getters["coaches/coaches"].find(
@@ -46,7 +50,8 @@ export default {
         rate,
         description,
         contactLink,
-        id: props.id
+        id: props.id,
+        isOnContact
       }
     },
     components: { BaseBadge, BaseCard, BaseButton }
@@ -63,7 +68,7 @@ export default {
       </section>
       <section>
         <BaseCard>
-          <header>
+          <header v-if="isOnContact()">
             <h2>Interested? Reach out now!</h2>
             <BaseButton link :to="contactLink">Contact</BaseButton>
           </header>

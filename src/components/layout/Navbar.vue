@@ -44,6 +44,7 @@ export default{
                 Home
             </router-link>
             <router-link
+                v-if="isLoggedIn"
                 :to="{ name: 'mealsData' }"
                 class="text-center inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
                 :class="{ 'active-link': isLinkActive('/meals-data')}"

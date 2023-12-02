@@ -34,7 +34,6 @@ const actions = {
     );
 
     const responseData: ResponseData = await response.json();
-
     if (!response.ok) {
       const error = new Error(responseData.name || 'Failed to send request.');
       throw error;

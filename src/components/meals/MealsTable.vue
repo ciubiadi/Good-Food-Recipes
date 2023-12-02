@@ -1,27 +1,15 @@
 <script lang="ts">
-import { computed, onMounted } from 'vue';
 import MealsTableItem from './MealsTableItem.vue';
-import { useStore } from 'vuex';
-
-// interface SidebarMethods {
-//   onUnpin: (meal: IMeal) => void;
-// }
+import { computed } from 'vue';
 
 export default {
-    setup() {
-        const store = useStore();
-
-        const meals = computed(() => {
-            console.log('store-MealsTable', store)
-            return store.state.searchedMeals
+    props: ["meals"],
+    setup(props) {
+        const mealsList = computed(() => {
+            return props.meals;
         });
-
-        onMounted(async () => {
-            await store.dispatch("meals/searchMeals", '');
-        });
-
         return {
-            meals,
+            mealsList,
         };
     },
     components: { MealsTableItem }
@@ -29,26 +17,33 @@ export default {
 </script>
 
 <template>
-    <table class="table table-bordered table-sm table-hover table-striped" id="webmapMeals">
-        <thead>
+    <table class="w-full text-md text-left rtl:text-right" id="webmapMeals">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
             <tr>
-                <th class="text-center">Meal
+                <th scope="col" class="p-4">
+                    <div class="flex items-center">
+                        <input id="checkbox-all" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring">
+                        <label for="checkbox-all" class="sr-only">checkbox</label>
+                    </div>
+                </th>
+                <th scope="col" class="px-6 py-3">Meal
                     <!-- <i :class="[currentSortDir == 'asc' ? 'fa-solid fa-arrow-down' : 'fa-solid fa-arrow-up' ]"></i> -->
                 </th>
-                <th class="text-center">Category 
+                <th scope="col" class="px-6 py-3">Category 
                     <!-- <i :class="[currentSortDir == 'asc' ? 'fa-solid fa-arrow-down' : 'fa-solid fa-arrow-up' ]"></i> -->
                 </th>
-                <th class="text-center">Area 
+                <th scope="col" class="px-6 py-3">Area 
                     <!-- <i :class="[currentSortDir == 'asc' ? 'fa-solid fa-arrow-down' : 'fa-solid fa-arrow-up' ]"></i> -->
                 </th>
-                <th class="text-center">Tags
+                <th scope="col" class="px-6 py-3">Tags
                     <!-- <i :class="[currentSortDir == 'asc' ? 'fa-solid fa-arrow-down' : 'fa-solid fa-arrow-up' ]"></i> -->
                 </th>
-                <th class="text-center">Actions</th>
+                <th scope="col" class="px-6 py-3">Actions</th>
             </tr>   
         </thead>
         <tbody>        
-            <tr :key="meal.idMeal" v-for="meal in meals" >
+            <tr class="bg-white border-b hover:bg-green-50" 
+            :key="meal.idMeal" v-for="meal in meals" >
                 <MealsTableItem :meal="meal"/>
             </tr>
         </tbody>

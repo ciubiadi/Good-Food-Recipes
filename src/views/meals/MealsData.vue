@@ -1,26 +1,6 @@
-<script lang="ts">
-import { onMounted } from 'vue';
-import { computed } from '@vue/reactivity';
-import { useStore } from 'vuex';
+<script setup lang="ts">
 import TableSidebar from '../../components/meals/TableSidebar.vue';
 import MealsTableSection from './MealsTableSection.vue';
-
-export default {
-    setup() {
-        const store = useStore();
-        const meals = computed(() => store.state.searchedMeals);
-        
-        onMounted(async () => {
-            // store.dispatch("meals/searchMeals", "");
-        });
-
-        return {
-            meals
-        };
-    },
-    components: { TableSidebar, MealsTableSection }
-}
-
 </script>
 
 <template>
@@ -43,7 +23,7 @@ export default {
         </div>
     </div> -->
   <div class="flex">
-    <TableSidebar class="w-[30%]"/>
-    <MealsTableSection class="w-[70%]"/>
+    <TableSidebar class="min-w-[20%] w-[20%]"/>
+    <MealsTableSection class="w-[80%]"/>
   </div>
 </template>

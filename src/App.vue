@@ -3,33 +3,40 @@
 
 <template>
   <router-view />
-</template>
+</template> -->
+<script lang="ts">
+import { computed, watch, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
-<style scoped>
-
-</style> -->
-<script>
 export default {
-  computed: {
-    didAutoLogout() {
-      return this.$store.getters.didAutoLogout;
-    }
-  },
-  created() {
-    this.$store.dispatch('tryLogin');
-  },
-  watch: {
-    didAutoLogout(curValue, oldValue) {
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+
+    const didAutoLogout = computed(() => {
+      return store.getters.didAutoLogout;
+    });
+
+    onMounted(() => {
+      store.dispatch('tryLogin');
+    });
+
+    watch(didAutoLogout, (curValue, oldValue) => {
       if (curValue && curValue !== oldValue) {
-        this.$router.replace('/coaches');
+        router.replace('/coaches');
       }
-    }
-  }
-}
+    });
+
+    return {
+      didAutoLogout,
+    };
+  },
+};
 </script>
 
 <template>
-<router-view v-slot="slotProps">
+  <router-view v-slot="slotProps">
     <!-- <transition name="route" mode="out-in"> -->
       <component :is="slotProps.Component"></component>
     <!-- </transition> -->
