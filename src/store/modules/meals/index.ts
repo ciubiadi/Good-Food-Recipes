@@ -11,7 +11,6 @@ export default {
       mealsByIngredient: [],
       pinnedMeals: [],
       ingredient: {},
-      loading: false,
     }
   },
   mutations,

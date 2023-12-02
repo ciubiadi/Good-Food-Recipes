@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router';
 import BaseDialog from '../../components/ui/BaseDialog.vue';
 import BaseCard from '../../components/ui/BaseCard.vue';
 import BaseButton from '../../components/ui/BaseButton.vue';
+import BaseSpinner from '../../components/ui/BaseSpinner.vue';
 
 export default {
     setup() {
@@ -64,7 +65,7 @@ export default {
             handleError,
         };
     },
-    components: { BaseDialog, BaseCard, BaseButton }
+    components: { BaseDialog, BaseCard, BaseButton, BaseSpinner }
 };
 </script>
 

@@ -2,12 +2,15 @@
 import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import MealsTable from '../../components/meals/MealsTable.vue';
+import BaseDialog from '../../components/ui/BaseDialog.vue';
+import BaseSpinner from '../../components/ui/BaseSpinner.vue';
 
 export default {
   setup() {
     const keyword = ref("");
     const store = useStore();
     const currentPage = ref(1);
+    const isLoading = ref(false);
     const itemsPerPage = ref(10); // Default number of items per page
     const entriesPerPageOptions = [10, 15, 25]; // You can customize these options
     const paginatedMeals = computed(() => {
@@ -25,11 +28,13 @@ export default {
     const totalPages = computed(() => Math.ceil(meals.value.length / itemsPerPage.value));
 
     const searchSomeMeals = () => {
+      isLoading.value = true;
       if (keyword.value) {
         store.dispatch("meals/searchMeals", keyword.value);
       } else {
         store.dispatch("meals/searchMeals", '');
       }
+      isLoading.value = false;
     };
 
     const changePage = (page: number) => {
@@ -41,7 +46,10 @@ export default {
     };
 
     onMounted(() => {
+      isLoading.value = true;
       store.dispatch("meals/searchMeals", '');
+      isLoading.value = false;
+
     });
 
     return {
@@ -57,12 +65,16 @@ export default {
       updatePage,
       totalPages,
       entriesPerPageOptions,
+      isLoading
     };
   },
-  components: { MealsTable },
+  components: { MealsTable, BaseDialog, BaseSpinner },
 };
 </script>
 <template>
+    <BaseDialog :show="isLoading" title="Loading Meals..." fixed>
+        <BaseSpinner></BaseSpinner>
+    </BaseDialog>
     <div class="col-span-10 sm:col-span-12 container-main-table">
     <!-- INPUT SEARCH FILTER -->
     <br />
