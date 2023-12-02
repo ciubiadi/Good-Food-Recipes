@@ -7,6 +7,7 @@ PREREQUISITES :
 - use axios for fetching : https://www.npmjs.com/package/axios
 - Firebase for database
 - Firebase auth REST Api : https://firebase.google.com/docs/reference/rest/auth#section-create-email-password
+- Firebase hosting : https://console.firebase.google.com/u/0/project/vuemealsandcooks/hosting/sites/vuemealsandcooks
 
 Logic :
 - The ingredients will be saved in vuex and then retrieved from there     
