@@ -1,26 +1,35 @@
 # Good Food Recipes App
+
 ## Introduction
+
 Welcome to **GoodFoodRecipes**, your go-to app for exploring delicious meals and connecting with experienced cooking coaches. Whether you're a food enthusiast looking for new recipes or a budding chef eager to enhance your skills, GoodFoodRecipes has you covered.
 
 ## Features
+
 ### Home
+
 - **Random Recipes:** Explore 10 random meal recipes to discover new and exciting dishes.
 
 ### Search Meals
+
 - **Dynamic Search:** Find meals by entering keywords, letters, or ingredients in the search bar.
 
 ### Meals By Letter
+
 - **Alphabetical Search:** Browse meals by clicking on the letter corresponding to the recipe's initial letter.
 
 ### Search By Ingredients
+
 - **Ingredient Search:** Explore a list of ingredients and find meals based on your preferred ingredients.
 
 ### Meals Table
+
 - **Table View:** Access a paginated table showcasing a variety of meals.
 - **Pin and Unpin:** Pin your favorite meals to easily access them later.
 - **Pin Limit:** Users can pin a maximum of 5 meals.
 
 ### Find a Cooking Professor
+
 - **Coaches List:** Explore a list of cooking coaches available for mentorship.
 - **View Coach Details:** Get detailed information about a cooking coach's expertise and experience.
 - **Register as a Cook:** Users can register as a cooking coach by logging in.
@@ -28,6 +37,7 @@ Welcome to **GoodFoodRecipes**, your go-to app for exploring delicious meals and
 - **View Incoming Requests:** Logged-in users can view incoming requests from aspiring cooking enthusiasts.
 
 ## Prerequisites
+
 To ensure a seamless experience, make sure you have the following:
 - [TailwindCSS](https://tailwindcss.com/docs/guides/vite#vue): Styling framework for a responsive and visually appealing UI.
 - [Vue Router 4](https://router.vuejs.org/): Navigation library for creating a single-page application experience.
@@ -38,10 +48,12 @@ To ensure a seamless experience, make sure you have the following:
 - [TheMealDB Recipe API](https://themealdb.com/api.php): External API for fetching meal recipes.
 - [Firebase Hosting](https://console.firebase.google.com/u/0/project/vuemealsandcooks/hosting/sites/vuemealsandcooks): Platform for hosting and deploying the VueMealsAndCooks app.
 
-## Logic
-In VueMealsAndCooks, the application's logic is efficiently managed through the Vuex store, which is divided into modular sections to handle different aspects of the app:
+## Store Logic
+
+In GoodFoodRecipes, the application's logic is efficiently managed through the Vuex store, which is divided into modular sections to handle different aspects of the app:
 
 ### Authentication Module
+
 - **State:**
   - `userId`: The unique identifier of the authenticated user.
   - `token`: The authentication token associated with the user.
@@ -51,6 +63,7 @@ In VueMealsAndCooks, the application's logic is efficiently managed through the 
   - Manage user authentication, token storage, and auto-logout functionality.
 
 ### Coaches Module
+
 - **State:**
   - `coaches`: An array of cooking coaches, each containing details such as `id`, `firstName`, `lastName`, `areas`, `description`, and `hourlyRate`.
 
@@ -59,6 +72,7 @@ In VueMealsAndCooks, the application's logic is efficiently managed through the 
   - Allow users to register as coaches.
 
 ### Requests Module
+
 - **State:**
   - `requests`: An array containing user requests.
 
@@ -66,6 +80,7 @@ In VueMealsAndCooks, the application's logic is efficiently managed through the 
   - Manage incoming requests from users seeking coaching.
 
 ### Meals Module
+
 - **State:**
   - `searchedMeals`: An array of meals resulting from a user's search query.
   - `mealsByLetter`: An array of meals categorized alphabetically.
@@ -82,6 +97,7 @@ The modular structure of the Vuex store ensures a clean separation of concerns, 
 
 
 ## Get Started
+
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/your-username/VueMealsAndCooks.git
@@ -101,10 +117,12 @@ The modular structure of the Vuex store ensures a clean separation of concerns, 
 4. **Explore and Enjoy:**
    Open your browser and navigate to http://localhost:3000 to start using VueMealsAndCooks.
 
-<hr>
 
 ## Conclusion
+
 GoodFoodRecipes brings together the joy of discovering new recipes and the opportunity to learn from experienced cooking coaches. Dive into the world of culinary delights and elevate your cooking skills with VueMealsAndCooks!
+
+---
 
 # Vue 3 + TypeScript + Vite
 
