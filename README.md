@@ -1,3 +1,71 @@
+# Good Food Recipes App
+## Introduction
+Welcome to **GoodFoodRecipes**, your go-to app for exploring delicious meals and connecting with experienced cooking coaches. Whether you're a food enthusiast looking for new recipes or a budding chef eager to enhance your skills, GoodFoodRecipes has you covered.
+
+## Features
+### Home
+- **Random Recipes:** Explore 10 random meal recipes to discover new and exciting dishes.
+
+### Search Meals
+- **Dynamic Search:** Find meals by entering keywords, letters, or ingredients in the search bar.
+
+### Meals By Letter
+- **Alphabetical Search:** Browse meals by clicking on the letter corresponding to the recipe's initial letter.
+
+### Search By Ingredients
+- **Ingredient Search:** Explore a list of ingredients and find meals based on your preferred ingredients.
+
+### Meals Table
+- **Table View:** Access a paginated table showcasing a variety of meals.
+- **Pin and Unpin:** Pin your favorite meals to easily access them later.
+- **Pin Limit:** Users can pin a maximum of 5 meals.
+
+### Find a Cooking Professor
+- **Coaches List:** Explore a list of cooking coaches available for mentorship.
+- **View Coach Details:** Get detailed information about a cooking coach's expertise and experience.
+- **Register as a Cook:** Users can register as a cooking coach by logging in.
+- **Contact Coach:** Connect with a coach for personalized guidance.
+- **View Incoming Requests:** Logged-in users can view incoming requests from aspiring cooking enthusiasts.
+
+## Prerequisites
+To ensure a seamless experience, make sure you have the following:
+- [TailwindCSS](https://tailwindcss.com/docs/guides/vite#vue): Styling framework for a responsive and visually appealing UI.
+- [Vue Router 4](https://router.vuejs.org/): Navigation library for creating a single-page application experience.
+- [Vuex 4](https://vuex.vuejs.org/): State management for efficiently managing application data.
+- [TailwindCSS Forms](https://github.com/tailwindlabs/tailwindcss-forms): Enhances form styling for a better user experience.
+- [Axios](https://www.npmjs.com/package/axios): A promise-based HTTP client for making API requests.
+- [Firebase](https://firebase.google.com/): Database and authentication services for storing user data securely.
+- [TheMealDB Recipe API](https://themealdb.com/api.php): External API for fetching meal recipes.
+- [Firebase Hosting](https://console.firebase.google.com/u/0/project/vuemealsandcooks/hosting/sites/vuemealsandcooks): Platform for hosting and deploying the VueMealsAndCooks app.
+
+## Logic
+- **Ingredient Storage:** Vuex is used to store and retrieve ingredients efficiently.
+
+## Get Started
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/your-username/VueMealsAndCooks.git
+   ```
+
+2. **Install Dependencies:**
+   ```bash
+   cd VueMealsAndCooks
+   npm install
+   ```
+   
+3. **Run the App:**
+   ```bash
+   npm run dev
+   ```
+   
+4. **Explore and Enjoy:**
+   Open your browser and navigate to http://localhost:3000 to start using VueMealsAndCooks.
+
+<hr>
+
+## Conclusion
+GoodFoodRecipes brings together the joy of discovering new recipes and the opportunity to learn from experienced cooking coaches. Dive into the world of culinary delights and elevate your cooking skills with VueMealsAndCooks!
+
 # Vue 3 + TypeScript + Vite
 
 This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
