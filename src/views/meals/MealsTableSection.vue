@@ -11,8 +11,8 @@ export default {
     const store = useStore();
     const currentPage = ref(1);
     const isLoading = ref(false);
-    const itemsPerPage = ref(10); // Default number of items per page
-    const entriesPerPageOptions = [10, 15, 25]; // You can customize these options
+    const itemsPerPage = ref(10); 
+    const entriesPerPageOptions = [5, 10, 15, 25]; 
     const paginatedMeals = computed(() => {
       const startIndex = (currentPage.value - 1) * itemsPerPage.value;
       const endIndex = Math.min(startIndex + itemsPerPage.value - 1, meals.value.length - 1);
