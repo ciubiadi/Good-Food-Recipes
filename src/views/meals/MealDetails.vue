@@ -18,7 +18,7 @@ const getIngredient = (index: number): string | undefined => {
 const getMeasure = (index: number): string | undefined => {
   const key = `strMeasure${index}` as keyof IMealValue;
   const value = meal.value ? meal.value[key] : undefined;
-  return value !== null ? value : undefined as string | undefined;
+  return value !== null && value != " " ? value : undefined as string | undefined;
 };
 
 onMounted(() => {
