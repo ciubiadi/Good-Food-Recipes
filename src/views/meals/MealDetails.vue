@@ -5,8 +5,8 @@ import axiosClient from '../../utils/axiosClient.js';
 import { IMealValue } from '../../utils/types.js';
 import YoutubeButton from '../../components/ui/YoutubeButton.vue';
 import BaseButton from '../../components/ui/BaseButton.vue';
-import BaseDialog from '../../components/ui/BaseDialog.vue';
-import BaseSpinner from '../../components/ui/BaseSpinner.vue';
+// import BaseDialog from '../../components/ui/BaseDialog.vue';
+// import BaseSpinner from '../../components/ui/BaseSpinner.vue';
 
 const route = useRoute();
 const meal = ref<IMealValue | null>(null);
