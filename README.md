@@ -39,7 +39,47 @@ To ensure a seamless experience, make sure you have the following:
 - [Firebase Hosting](https://console.firebase.google.com/u/0/project/vuemealsandcooks/hosting/sites/vuemealsandcooks): Platform for hosting and deploying the VueMealsAndCooks app.
 
 ## Logic
-- **Ingredient Storage:** Vuex is used to store and retrieve ingredients efficiently.
+In VueMealsAndCooks, the application's logic is efficiently managed through the Vuex store, which is divided into modular sections to handle different aspects of the app:
+
+### Authentication Module
+- **State:**
+  - `userId`: The unique identifier of the authenticated user.
+  - `token`: The authentication token associated with the user.
+  - `didAutoLogout`: A flag indicating whether the user has been automatically logged out.
+
+- **Mutations, Actions, Getters:**
+  - Manage user authentication, token storage, and auto-logout functionality.
+
+### Coaches Module
+- **State:**
+  - `coaches`: An array of cooking coaches, each containing details such as `id`, `firstName`, `lastName`, `areas`, `description`, and `hourlyRate`.
+
+- **Mutations, Actions, Getters:**
+  - Handle the retrieval and manipulation of coaching information.
+  - Allow users to register as coaches.
+
+### Requests Module
+- **State:**
+  - `requests`: An array containing user requests.
+
+- **Mutations, Actions, Getters:**
+  - Manage incoming requests from users seeking coaching.
+
+### Meals Module
+- **State:**
+  - `searchedMeals`: An array of meals resulting from a user's search query.
+  - `mealsByLetter`: An array of meals categorized alphabetically.
+  - `mealsByIngredient`: An array of meals based on selected ingredients.
+  - `pinnedMeals`: An array to store up to 5 user-pinned favorite meals.
+  - `ingredient`: An object representing a selected ingredient.
+
+- **Mutations, Actions, Getters:**
+  - Handle the retrieval and display of various meal-related data.
+  - Allow users to pin and unpin favorite meals.
+  - Manage the storage and retrieval of ingredients.
+
+The modular structure of the Vuex store ensures a clean separation of concerns, making the application scalable and maintainable. Each module focuses on a specific aspect of the app, providing a clear and organized structure for handling state, mutations, actions, and getters.
+
 
 ## Get Started
 1. **Clone the Repository:**
