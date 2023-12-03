@@ -1,4 +1,4 @@
-# Good Food Recipes App
+<img width="1495" alt="MealsTable" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/dc2f0a02-e2d6-4360-a9cf-5ad0cbac94c0"># Good Food Recipes App
 
 ## Introduction
 
@@ -136,3 +136,38 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
    1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
    2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+
+## Screenshots
+### Home Oage
+<img width="1491" alt="Home" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/22b26c2a-82b4-480e-a4b3-8198e5d93fb2">
+
+### Search Meals
+<img width="1492" alt="SearchMeals" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/cba5d183-1240-44d8-80bf-91887dc37526">
+
+### Search Meals By Letter
+<img width="1493" alt="MealsByLetter" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/c9a1d1f3-febf-430e-af9f-6bb4e333e3e4">
+
+### Search Meals By Ingredients
+<img width="1495" alt="MealsByIngredients" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/562aac1e-067f-42aa-8796-542a70a1a4e1">
+
+### Coaches List
+<img width="1494" alt="Coaches" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/8978f413-7ca8-4298-a295-386a063a47ce">
+
+### Coach Detail
+<img width="1493" alt="CoachDetails" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/0a16fed7-31ed-4dc6-9c6d-1c79aaa022fb">
+
+### Contact Coach
+<img width="1495" alt="ContactCoach" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/4bb7c028-2495-420b-81cc-b2eb72f8b868">
+
+### Login Or Signup
+<img width="40%" alt="Login" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/a15a5fee-e30c-4653-a414-510c927602ef">
+<img width="40%" alt="sign up" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/a544a396-ca6a-44c0-9f58-6a1725d29d49">
+
+### Register as a Coach
+<img width="1494" alt="RegisterCoach" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/735fb61b-97e2-47a8-98e0-614b97fef14d">
+
+### Requests List
+<img width="1492" alt="Requests" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/3972323e-77af-4662-bdec-155cd23d4970">
+
+### Meals Data Table
+<img width="1495" alt="MealsTable" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/cd134853-9703-4cb9-baa7-be75249716dd">
