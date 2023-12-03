@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to **GoodFoodRecipes**, your go-to app for exploring delicious meals and connecting with experienced cooking coaches. Whether you're a food enthusiast looking for new recipes or a budding chef eager to enhance your skills, GoodFoodRecipes has you covered.
+Welcome to **GoodFoodRecipes**, your go-to app for exploring delicious meals and connecting with experienced cooking coaches. Whether you're a food enthusiast looking for new recipes or a budding chef eager to enhance your skills, GoodFoodRecipes has you covered. The app can be cheked at https://vuemealsandcooks.web.app/ .
 
 ## Features
 
