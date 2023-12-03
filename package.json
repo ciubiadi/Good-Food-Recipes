@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000",
-    "build": "firebase deploy",
-    "build-all-vite": "vue-tsc && vite build",
+    "build-firebase": "firebase deploy",
+    "build": "vue-tsc && vite build",
     "build2": "vue-cli-service build",
     "build-vite": "vite build",
     "preview": "vite preview"
