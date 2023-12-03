@@ -1,4 +1,5 @@
-<img width="1495" alt="MealsTable" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/dc2f0a02-e2d6-4360-a9cf-5ad0cbac94c0"># Good Food Recipes App
+# Good Food Recipes App
+<img width="1495" alt="MealsTable" src="https://github.com/ciubiadi/Good-Food-Recipes/assets/46215033/dc2f0a02-e2d6-4360-a9cf-5ad0cbac94c0">
 
 ## Introduction
 
