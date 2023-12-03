@@ -132,7 +132,7 @@ export default {
   input:focus,
   textarea:focus {
     border-color: #008d38;
-    background-color: #faf6ff;
+    background-color: #f6fff8;
     outline: none;
   }
 
