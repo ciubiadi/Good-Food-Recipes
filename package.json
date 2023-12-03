@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --port=3000",
     "build": "vue-tsc && vite build",
+    "build2": "vue-cli-service build",
     "preview": "vite preview"
   },
   "dependencies": {
