@@ -36,17 +36,16 @@ Welcome to **GoodFoodRecipes**, your go-to app for exploring delicious meals and
 - **Contact Coach:** Connect with a coach for personalized guidance.
 - **View Incoming Requests:** Logged-in users can view incoming requests from aspiring cooking enthusiasts.
 
-## Prerequisites
+## What Did I Use
 
-To ensure a seamless experience, make sure you have the following:
-- [TailwindCSS](https://tailwindcss.com/docs/guides/vite#vue): Styling framework for a responsive and visually appealing UI.
-- [Vue Router 4](https://router.vuejs.org/): Navigation library for creating a single-page application experience.
-- [Vuex 4](https://vuex.vuejs.org/): State management for efficiently managing application data.
-- [TailwindCSS Forms](https://github.com/tailwindlabs/tailwindcss-forms): Enhances form styling for a better user experience.
-- [Axios](https://www.npmjs.com/package/axios): A promise-based HTTP client for making API requests.
-- [Firebase](https://firebase.google.com/): Database and authentication services for storing user data securely.
-- [TheMealDB Recipe API](https://themealdb.com/api.php): External API for fetching meal recipes.
-- [Firebase Hosting](https://console.firebase.google.com/u/0/project/vuemealsandcooks/hosting/sites/vuemealsandcooks): Platform for hosting and deploying the VueMealsAndCooks app.
+To create GoodFoodRecipes, I utilized the following technologies and tools as prerequisites:
+- [TailwindCSS](https://tailwindcss.com/docs/guides/vite#vue): TailwindCSS served as the styling framework, providing a visually appealing user interface. The integration details can be found in the [TailwindCSS Vite Guide](https://tailwindcss.com/docs/guides/vite#vue).
+- [Vue Router 4](https://router.vuejs.org/): Vue Router 4 was used for navigation, enabling the creation of a seamless single-page application experience. 
+- [Vuex 4](https://vuex.vuejs.org/): Vuex 4 played a crucial role in state management, allowing for the efficient handling of application data. The Vuex store was modularized to manage various aspects of the app.
+- [TailwindCSS Forms](https://github.com/tailwindlabs/tailwindcss-forms): TailwindCSS Forms enhanced form styling, contributing to an improved user experience. The installation and usage details can be found in the [TailwindCSS Forms GitHub repository](https://github.com/tailwindlabs/tailwindcss-forms).
+- [Axios](https://www.npmjs.com/package/axios): Axios, a promise-based HTTP client, was used for making API requests. It facilitated seamless communication with external APIs, such as fetching data from [TheMealDB Recipe API](https://themealdb.com/api.php).
+- [Firebase](https://firebase.google.com/): Firebase services, including the database and authentication, were employed for securely storing user data. Firebase Hosting was utilized for deploying and hosting the app.
+- [TheMealDB Recipe API](https://themealdb.com/api.php): External API for fetching meal recipes and ingredients.
 
 ## Store Logic
 
@@ -116,11 +115,6 @@ The modular structure of the Vuex store ensures a clean separation of concerns, 
    
 4. **Explore and Enjoy:**
    Open your browser and navigate to http://localhost:3000 to start using VueMealsAndCooks.
-
-
-## Conclusion
-
-GoodFoodRecipes brings together the joy of discovering new recipes and the opportunity to learn from experienced cooking coaches. Dive into the world of culinary delights and elevate your cooking skills with VueMealsAndCooks!
 
 ---
 
