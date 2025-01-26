@@ -2,6 +2,9 @@ import { GetterTree } from "vuex";
 import { IAuthState } from "../../../utils/types";
 
 const getters: GetterTree<IAuthState, any> = {
+  email(state): string | null {
+    return state.email;
+  },
   userId(state): string | null {
     return state.userId;
   },

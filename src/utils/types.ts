@@ -34,6 +34,7 @@ export interface IRequestsState {
 }
 
 export interface IAuthState {
+  email: string | null,
   userId: string | null,
   token: string | null,
   didAutoLogout: boolean

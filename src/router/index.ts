@@ -68,6 +68,7 @@ const routes: RouteRecordRaw[] = [
         path: '/coaches',
         name: 'coaches',
         component: CoachesListVue,
+        meta: { requiresAuth: true }
       },
       {
           path: '/coaches/:id',
@@ -80,7 +81,8 @@ const routes: RouteRecordRaw[] = [
               name: 'contactCoach',
               component: ContactCoachVue,
             }
-          ]
+          ],
+          meta: { requiresAuth: true }
       },
       {
         path: '/register',

@@ -3,6 +3,7 @@ import { IAuthState } from "../../../utils/types";
 
 const mutations: MutationTree<IAuthState> = {
   setUser(state, payload): void {
+    state.email = payload.email;
     state.token = payload.token;
     state.userId = payload.userId;
     state.didAutoLogout = false;

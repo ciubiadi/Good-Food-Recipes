@@ -52,6 +52,7 @@ export default {
 
     localStorage.setItem('token', responseData.idToken);
     localStorage.setItem('userId', responseData.localId);
+    localStorage.setItem('email', payload.email);
     localStorage.setItem('tokenExpiration', expirationDate.toString());
 
     timer = setTimeout(() => {
@@ -59,6 +60,7 @@ export default {
     }, expiresIn);
 
     context.commit('setUser', {
+      email: payload.email,
       token: responseData.idToken,
       userId: responseData.localId,
     });
@@ -66,6 +68,7 @@ export default {
   tryLogin(context: ActionContext<RootState, RootState>): void {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
+    const email = localStorage.getItem('email');
     const tokenExpiration = localStorage.getItem('tokenExpiration');
 
     // if (!token || !userId || !tokenExpiration) {
@@ -93,12 +96,14 @@ export default {
 
     if (token && userId) {
       context.commit('setUser', {
+        email: email,
         token: token,
         userId: userId,
       });
     }
   },
   logout(context: ActionContext<RootState, RootState>): void {
+    localStorage.removeItem('email');
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     localStorage.removeItem('tokenExpiration');
@@ -109,6 +114,7 @@ export default {
     }
 
     context.commit('setUser', {
+      email: null,
       token: null,
       userId: null,
     });

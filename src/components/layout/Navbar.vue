@@ -10,6 +10,7 @@ export default{
         const router = useRouter();
         const store = useStore();
         const isLoggedIn = computed(() => store.getters.isAuthenticated);
+        const email = computed(() => store.getters.email);
         const isLinkActive = (path: string) => {
             return path == route.path;
         };
@@ -20,7 +21,8 @@ export default{
         return {
             isLinkActive,
             isLoggedIn,
-            logOut
+            logOut,
+            email
         };
     },
     components: { BaseButton }
@@ -33,7 +35,13 @@ export default{
 <template>
     <header class="bg-white shadow h-16 flex justify-between items-stretch">
         <div class="inline-flex items-center h-full px-5 text-green-800 font-bold">
-            GoodFood<span class="text-green-500 font-bold">:)</span>Recipes
+            <span>GoodFood
+                <span class="text-green-500 font-bold">:)</span>
+                Recipes
+            </span>
+        </div>
+        <div v-if="isLoggedIn" class="inline-flex items-center h-full px-5">
+            <span>Hello <strong>{{ email }}!</strong></span>
         </div>
         <div class="flex items-center gap-1 pr-[20px]">
             <router-link
@@ -58,13 +66,13 @@ export default{
             >
                 Search Meals
             </router-link>
-            <router-link
+            <!-- <router-link
                 :to="{ name: 'byLetter' }"
                 class="text-center inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
                 :class="{ 'active-link': isLinkActive('/by-letter')}"  
             >
                 Meals By Letter
-            </router-link>
+            </router-link> -->
             <router-link
                 :to="{ name: 'ingredients' }"
                 class="text-center inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
@@ -73,6 +81,7 @@ export default{
                 Meals By Ingredients
             </router-link>
             <router-link
+                v-if="isLoggedIn"
                 :to="{ name: 'coaches' }"
                 class="text-center inline-flex items-center px-2 h-full transition-colors hover:bg-green-300 hover:text-white"
                 :class="{ 'active-link': isLinkActive('/coaches')}"
